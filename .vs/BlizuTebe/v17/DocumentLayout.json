@@ -1,0 +1,207 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\katar\\Desktop\\diplomski\\projekat\\BlizuTebe\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{267735C4-5661-4090-A13D-AEC5B3B88936}|BlizuTebe\\BlizuTebe.csproj|c:\\users\\katar\\desktop\\diplomski\\projekat\\blizutebe\\blizutebe\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{267735C4-5661-4090-A13D-AEC5B3B88936}|BlizuTebe\\BlizuTebe.csproj|solutionrelative:blizutebe\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{267735C4-5661-4090-A13D-AEC5B3B88936}|BlizuTebe\\BlizuTebe.csproj|c:\\users\\katar\\desktop\\diplomski\\projekat\\blizutebe\\blizutebe\\migrations\\20250630140423_init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{267735C4-5661-4090-A13D-AEC5B3B88936}|BlizuTebe\\BlizuTebe.csproj|solutionrelative:blizutebe\\migrations\\20250630140423_init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{267735C4-5661-4090-A13D-AEC5B3B88936}|BlizuTebe\\BlizuTebe.csproj|c:\\users\\katar\\desktop\\diplomski\\projekat\\blizutebe\\blizutebe\\migrations\\appdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{267735C4-5661-4090-A13D-AEC5B3B88936}|BlizuTebe\\BlizuTebe.csproj|solutionrelative:blizutebe\\migrations\\appdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{267735C4-5661-4090-A13D-AEC5B3B88936}|BlizuTebe\\BlizuTebe.csproj|c:\\users\\katar\\desktop\\diplomski\\projekat\\blizutebe\\blizutebe\\database\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{267735C4-5661-4090-A13D-AEC5B3B88936}|BlizuTebe\\BlizuTebe.csproj|solutionrelative:blizutebe\\database\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{267735C4-5661-4090-A13D-AEC5B3B88936}|BlizuTebe\\BlizuTebe.csproj|c:\\users\\katar\\desktop\\diplomski\\projekat\\blizutebe\\blizutebe\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{267735C4-5661-4090-A13D-AEC5B3B88936}|BlizuTebe\\BlizuTebe.csproj|solutionrelative:blizutebe\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{267735C4-5661-4090-A13D-AEC5B3B88936}|BlizuTebe\\BlizuTebe.csproj|c:\\users\\katar\\desktop\\diplomski\\projekat\\blizutebe\\blizutebe\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{267735C4-5661-4090-A13D-AEC5B3B88936}|BlizuTebe\\BlizuTebe.csproj|solutionrelative:blizutebe\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{267735C4-5661-4090-A13D-AEC5B3B88936}|BlizuTebe\\BlizuTebe.csproj|c:\\users\\katar\\desktop\\diplomski\\projekat\\blizutebe\\blizutebe\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{267735C4-5661-4090-A13D-AEC5B3B88936}|BlizuTebe\\BlizuTebe.csproj|solutionrelative:blizutebe\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{267735C4-5661-4090-A13D-AEC5B3B88936}|BlizuTebe\\BlizuTebe.csproj|c:\\users\\katar\\desktop\\diplomski\\projekat\\blizutebe\\blizutebe\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{267735C4-5661-4090-A13D-AEC5B3B88936}|BlizuTebe\\BlizuTebe.csproj|solutionrelative:blizutebe\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{267735C4-5661-4090-A13D-AEC5B3B88936}|BlizuTebe\\BlizuTebe.csproj|c:\\users\\katar\\desktop\\diplomski\\projekat\\blizutebe\\blizutebe\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{267735C4-5661-4090-A13D-AEC5B3B88936}|BlizuTebe\\BlizuTebe.csproj|solutionrelative:blizutebe\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{267735C4-5661-4090-A13D-AEC5B3B88936}|BlizuTebe\\BlizuTebe.csproj|c:\\users\\katar\\desktop\\diplomski\\projekat\\blizutebe\\blizutebe\\blizutebe.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{267735C4-5661-4090-A13D-AEC5B3B88936}|BlizuTebe\\BlizuTebe.csproj|solutionrelative:blizutebe\\blizutebe.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{267735C4-5661-4090-A13D-AEC5B3B88936}|BlizuTebe\\BlizuTebe.csproj|c:\\users\\katar\\desktop\\diplomski\\projekat\\blizutebe\\blizutebe\\blizutebe.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{267735C4-5661-4090-A13D-AEC5B3B88936}|BlizuTebe\\BlizuTebe.csproj|solutionrelative:blizutebe\\blizutebe.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AppDbContextModelSnapshot.cs",
+              "DocumentMoniker": "C:\\Users\\katar\\Desktop\\diplomski\\projekat\\BlizuTebe\\BlizuTebe\\Migrations\\AppDbContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "BlizuTebe\\Migrations\\AppDbContextModelSnapshot.cs",
+              "ToolTip": "C:\\Users\\katar\\Desktop\\diplomski\\projekat\\BlizuTebe\\BlizuTebe\\Migrations\\AppDbContextModelSnapshot.cs",
+              "RelativeToolTip": "BlizuTebe\\Migrations\\AppDbContextModelSnapshot.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-30T14:11:22.679Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "20250630140423_init.cs",
+              "DocumentMoniker": "C:\\Users\\katar\\Desktop\\diplomski\\projekat\\BlizuTebe\\BlizuTebe\\Migrations\\20250630140423_init.cs",
+              "RelativeDocumentMoniker": "BlizuTebe\\Migrations\\20250630140423_init.cs",
+              "ToolTip": "C:\\Users\\katar\\Desktop\\diplomski\\projekat\\BlizuTebe\\BlizuTebe\\Migrations\\20250630140423_init.cs",
+              "RelativeToolTip": "BlizuTebe\\Migrations\\20250630140423_init.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-30T14:04:23.883Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\katar\\Desktop\\diplomski\\projekat\\BlizuTebe\\BlizuTebe\\Models\\User.cs",
+              "RelativeDocumentMoniker": "BlizuTebe\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\katar\\Desktop\\diplomski\\projekat\\BlizuTebe\\BlizuTebe\\Models\\User.cs",
+              "RelativeToolTip": "BlizuTebe\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-30T13:59:51.455Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\katar\\Desktop\\diplomski\\projekat\\BlizuTebe\\BlizuTebe\\Database\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "BlizuTebe\\Database\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\katar\\Desktop\\diplomski\\projekat\\BlizuTebe\\BlizuTebe\\Database\\AppDbContext.cs",
+              "RelativeToolTip": "BlizuTebe\\Database\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-30T13:43:18.378Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "WeatherForecastController.cs",
+              "DocumentMoniker": "C:\\Users\\katar\\Desktop\\diplomski\\projekat\\BlizuTebe\\BlizuTebe\\Controllers\\WeatherForecastController.cs",
+              "RelativeDocumentMoniker": "BlizuTebe\\Controllers\\WeatherForecastController.cs",
+              "ToolTip": "C:\\Users\\katar\\Desktop\\diplomski\\projekat\\BlizuTebe\\BlizuTebe\\Controllers\\WeatherForecastController.cs",
+              "RelativeToolTip": "BlizuTebe\\Controllers\\WeatherForecastController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-30T13:17:41.664Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\katar\\Desktop\\diplomski\\projekat\\BlizuTebe\\BlizuTebe\\appsettings.json",
+              "RelativeDocumentMoniker": "BlizuTebe\\appsettings.json",
+              "ToolTip": "C:\\Users\\katar\\Desktop\\diplomski\\projekat\\BlizuTebe\\BlizuTebe\\appsettings.json",
+              "RelativeToolTip": "BlizuTebe\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-06-30T13:17:25.05Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\katar\\Desktop\\diplomski\\projekat\\BlizuTebe\\BlizuTebe\\Program.cs",
+              "RelativeDocumentMoniker": "BlizuTebe\\Program.cs",
+              "ToolTip": "C:\\Users\\katar\\Desktop\\diplomski\\projekat\\BlizuTebe\\BlizuTebe\\Program.cs",
+              "RelativeToolTip": "BlizuTebe\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-30T13:00:54.325Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "BlizuTebe.http",
+              "DocumentMoniker": "C:\\Users\\katar\\Desktop\\diplomski\\projekat\\BlizuTebe\\BlizuTebe\\BlizuTebe.http",
+              "RelativeDocumentMoniker": "BlizuTebe\\BlizuTebe.http",
+              "ToolTip": "C:\\Users\\katar\\Desktop\\diplomski\\projekat\\BlizuTebe\\BlizuTebe\\BlizuTebe.http",
+              "RelativeToolTip": "BlizuTebe\\BlizuTebe.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2025-06-30T13:00:50.261Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\katar\\Desktop\\diplomski\\projekat\\BlizuTebe\\BlizuTebe\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "BlizuTebe\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\katar\\Desktop\\diplomski\\projekat\\BlizuTebe\\BlizuTebe\\Properties\\launchSettings.json",
+              "RelativeToolTip": "BlizuTebe\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-06-30T12:56:49.426Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "BlizuTebe",
+              "DocumentMoniker": "C:\\Users\\katar\\Desktop\\diplomski\\projekat\\BlizuTebe\\BlizuTebe\\BlizuTebe.csproj",
+              "RelativeDocumentMoniker": "BlizuTebe\\BlizuTebe.csproj",
+              "ToolTip": "C:\\Users\\katar\\Desktop\\diplomski\\projekat\\BlizuTebe\\BlizuTebe\\BlizuTebe.csproj",
+              "RelativeToolTip": "BlizuTebe\\BlizuTebe.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-06-30T12:43:31.021Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "WeatherForecast.cs",
+              "DocumentMoniker": "C:\\Users\\katar\\Desktop\\diplomski\\projekat\\BlizuTebe\\BlizuTebe\\WeatherForecast.cs",
+              "RelativeDocumentMoniker": "BlizuTebe\\WeatherForecast.cs",
+              "ToolTip": "C:\\Users\\katar\\Desktop\\diplomski\\projekat\\BlizuTebe\\BlizuTebe\\WeatherForecast.cs",
+              "RelativeToolTip": "BlizuTebe\\WeatherForecast.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-30T12:34:43.273Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
