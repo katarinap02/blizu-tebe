@@ -1,0 +1,31 @@
+# Build output
+**/bin/
+**/obj/
+
+# Entity Framework Core Migrations
+**/Migrations/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio folder
+.vs/
+
+# Publish output
+**/publish/
+
+# Local secrets
+**/secrets.json
+
+# Logs
+*.log
+
+# Backup files
+*.bak
+
+# OS generated files
+.DS_Store
+Thumbs.db
