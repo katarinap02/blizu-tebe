@@ -2,9 +2,6 @@
 **/bin/
 **/obj/
 
-# Entity Framework Core Migrations
-**/Migrations/
-
 # User-specific files
 *.user
 *.suo
