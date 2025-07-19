@@ -10,8 +10,8 @@ namespace BlizuTebe.Authentication
     public class JwtGenerator : ITokenGenerator
     {
         private readonly string _key = Environment.GetEnvironmentVariable("JWT_KEY") ?? "this_is_a_very_long_secret_key_for_jwt_token_12345";
-        private readonly string _issuer = Environment.GetEnvironmentVariable("JWT_ISSUER") ?? "explorer";
-        private readonly string _audience = Environment.GetEnvironmentVariable("JWT_AUDIENCE") ?? "explorer-front.com";
+        private readonly string _issuer = Environment.GetEnvironmentVariable("JWT_ISSUER") ?? "blizu-tebe-api";
+        private readonly string _audience = Environment.GetEnvironmentVariable("JWT_AUDIENCE") ?? "blizu-tebe-frontend";
 
         public AuthenticationTokensDto GenerateAccessToken(User user)
         {

@@ -6,7 +6,7 @@ using RouteAttribute = Microsoft.AspNetCore.Mvc.RouteAttribute;
 
 namespace BlizuTebe.Controllers
 {
-    [Route("api/users")]
+    [Route("api/auth")]
     public class AuthenticationController : BaseApiController
     {
         private readonly IAuthenticationService _authenticationService;
