@@ -27,7 +27,8 @@ builder.Services.AddScoped<IAuthenticationService, AuthentificationService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ITokenGenerator, JwtGenerator>();
 builder.Services.AddScoped<IUserService, UserService>();
-
+builder.Services.AddScoped<IAnnouncementRepository, AnnouncementRepository>();
+builder.Services.AddScoped<IAnnouncementService, AnnouncementService>();
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 

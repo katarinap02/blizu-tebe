@@ -17,6 +17,17 @@ namespace BlizuTebe.Services
             _userRepository = userRepository;
             _mapper = mapper;
         }
+
+        public Result<UserDto> deleteById(long id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Result<List<UserDto>> getAll()
+        {
+            throw new NotImplementedException();
+        }
+
         public Result<UserDto> getById(long id)
         {
             var user = _userRepository.GetById(id);
@@ -25,6 +36,11 @@ namespace BlizuTebe.Services
                 return Result.Fail("Not found");
             }
             else return Result.Ok(_mapper.Map<UserDto>(user));
+        }
+
+        public Result<UserDto> updateUser(long id, UserDto user)
+        {
+            throw new NotImplementedException();
         }
     }
 }
