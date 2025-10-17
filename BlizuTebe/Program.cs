@@ -60,6 +60,7 @@ builder.Services.AddScoped<ITokenGenerator, JwtGenerator>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IAnnouncementRepository, AnnouncementRepository>();
 builder.Services.AddScoped<IAnnouncementService, AnnouncementService>();
+builder.Services.AddSingleton<IWebHostEnvironment>(builder.Environment);
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 

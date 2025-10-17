@@ -19,10 +19,17 @@ namespace BlizuTebe.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public ActionResult<AnnouncementDto> CreateAnnouncement([FromBody] AnnouncementDto announcementDto)
+        public ActionResult<AnnouncementDto> CreateAnnouncement([FromForm] AnnouncementDto announcementDto)
         {
-            // Pretpostavka je da servis ima 'create' metodu
             var result = _announcementService.Create(announcementDto);
+            return CreateResponse(result);
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPut("{id}")]
+        public ActionResult<AnnouncementDto> UpdateAnnouncement([FromRoute] long id, [FromForm] AnnouncementDto announcementDto)
+        {
+            var result = _announcementService.updateById(id, announcementDto);
             return CreateResponse(result);
         }
 
@@ -31,14 +38,6 @@ namespace BlizuTebe.Controllers
         public ActionResult<List<AnnouncementDto>> GetAllAnnouncements()
         {
             var result = _announcementService.getAnnouncements();
-            return CreateResponse(result);
-        }
-
-        [Authorize(Roles = "Admin")]
-        [HttpPut("{id}")]
-        public ActionResult<AnnouncementDto> UpdateAnnouncement([FromRoute] long id, [FromBody] AnnouncementDto announcementDto)
-        {
-            var result = _announcementService.updateById(id, announcementDto);
             return CreateResponse(result);
         }
 
