@@ -27,6 +27,10 @@ namespace BlizuTebe.Database
                 entity.Property(e => e.Boundary).HasColumnType("geography");
                 entity.Property(e => e.CenterPoint).HasColumnType("geography(Point)");
             });
+            modelBuilder.Entity<Announcement>(entity =>
+            {
+                entity.Property(e => e.Picture).IsRequired(false); 
+            });
         }
 
         public DbSet<User> Users { get; set; }

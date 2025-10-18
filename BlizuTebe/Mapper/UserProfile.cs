@@ -20,8 +20,8 @@ namespace BlizuTebe.Mapper
                 .ForMember(dest => dest.ExistingPicture, opt => opt.MapFrom(src => src.Picture));
             CreateMap<User, UserDto>();
             CreateMap<UserDto, User>()
-            .ForMember(dest => dest.Password, opt => opt.Ignore()) // Uvek ignoriši promenu lozinke kroz opšti DTO
-            .ForMember(dest => dest.IsVerified, opt => opt.Ignore()) // Uvek ignoriši promenu sistemskih polja
+            .ForMember(dest => dest.Password, opt => opt.Ignore()) 
+            .ForMember(dest => dest.IsVerified, opt => opt.Ignore()) 
             .ForMember(dest => dest.Role, opt => opt.Ignore());
 
            
