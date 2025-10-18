@@ -2,7 +2,7 @@
 {
     public class AnnouncementDto
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public IFormFile? Picture { get; set; } // Nullable
@@ -10,7 +10,7 @@
         public DateTime PublishedAt { get; set; }
         public DateTime ExpirationDate { get; set; }
         public bool IsImportant { get; set; }
-        public int? AdminId { get; set; }
-        public int? LocalCommuntyId { get; set; }
+        public long? AdminId { get; set; }
+        public long? LocalCommuntyId { get; set; }
     }
 }
