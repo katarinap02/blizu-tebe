@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using NetTopologySuite.Geometries;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
@@ -12,8 +13,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BlizuTebe.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250812161950_Announcements")]
-    partial class Announcements
+    [Migration("20251018173557_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,6 +24,7 @@ namespace BlizuTebe.Migrations
                 .HasAnnotation("ProductVersion", "9.0.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
+            NpgsqlModelBuilderExtensions.HasPostgresExtension(modelBuilder, "postgis");
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("BlizuTebe.Models.Announcement", b =>
@@ -33,12 +35,21 @@ namespace BlizuTebe.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<int?>("AdminId")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime>("ExpirationDate")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("IsImportant")
+                        .HasColumnType("boolean");
+
+                    b.Property<int?>("LocalCommuntyId")
+                        .HasColumnType("integer");
 
                     b.Property<string>("Picture")
                         .IsRequired()
@@ -56,6 +67,46 @@ namespace BlizuTebe.Migrations
                     b.ToTable("Announcements");
                 });
 
+            modelBuilder.Entity("BlizuTebe.Models.LocalCommunity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<Geometry>("Boundary")
+                        .IsRequired()
+                        .HasColumnType("geography");
+
+                    b.Property<Point>("CenterPoint")
+                        .IsRequired()
+                        .HasColumnType("geography(Point)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Facebook")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int?>("PresidentId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("LocalCommunities");
+                });
+
             modelBuilder.Entity("BlizuTebe.Models.User", b =>
                 {
                     b.Property<int>("Id")
@@ -70,6 +121,9 @@ namespace BlizuTebe.Migrations
                     b.Property<bool>("IsVerified")
                         .HasColumnType("boolean");
 
+                    b.Property<int?>("LocalCommunityId")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
@@ -77,6 +131,12 @@ namespace BlizuTebe.Migrations
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<string>("ProfilePicture")
+                        .HasColumnType("text");
+
+                    b.Property<double>("Rating")
+                        .HasColumnType("double precision");
 
                     b.Property<int>("Role")
                         .HasColumnType("integer");

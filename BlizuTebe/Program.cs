@@ -61,6 +61,8 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IAnnouncementRepository, AnnouncementRepository>();
 builder.Services.AddScoped<IAnnouncementService, AnnouncementService>();
 builder.Services.AddSingleton<IWebHostEnvironment>(builder.Environment);
+builder.Services.AddScoped<ILocalCommunityRepository, LocalCommunityRepository>();
+builder.Services.AddScoped<ILocalCommunityService, LocalCommunityService>();
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 

@@ -8,10 +8,13 @@
         public string Picture { get; set; }
         public DateTime PublishedAt { get; set; }
         public DateTime ExpirationDate { get; set; }
+        public bool IsImportant { get; set; }
+        public int? AdminId { get; set; }
+        public int? LocalCommuntyId { get; set; }
 
         public Announcement() { }
 
-        public Announcement(int id, string title, string description, string picture, DateTime publishedAt, DateTime expirationDate)
+        public Announcement(int id, string title, string description, string picture, DateTime publishedAt, DateTime expirationDate, bool isImportant, int? adminId, int? localCommuntyId)
         {
             Id = id;
             Title = title;
@@ -19,6 +22,9 @@
             Picture = picture;
             PublishedAt = publishedAt;
             ExpirationDate = expirationDate;
+            IsImportant = isImportant;
+            AdminId = adminId;
+            LocalCommuntyId = localCommuntyId;
         }
     }
 }

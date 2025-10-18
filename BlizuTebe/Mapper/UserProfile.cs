@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using BlizuTebe.Dtos;
 using BlizuTebe.Models;
+using NetTopologySuite.IO;
+using Newtonsoft.Json;
 
 namespace BlizuTebe.Mapper
 {
@@ -8,6 +10,7 @@ namespace BlizuTebe.Mapper
     {
         public UserProfile()
         {
+
             CreateMap<Announcement, AnnouncementDto>();
             CreateMap<AnnouncementDto, Announcement>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
@@ -20,6 +23,8 @@ namespace BlizuTebe.Mapper
             .ForMember(dest => dest.Password, opt => opt.Ignore()) // Uvek ignoriši promenu lozinke kroz opšti DTO
             .ForMember(dest => dest.IsVerified, opt => opt.Ignore()) // Uvek ignoriši promenu sistemskih polja
             .ForMember(dest => dest.Role, opt => opt.Ignore());
+
+           
         }
     }
 }

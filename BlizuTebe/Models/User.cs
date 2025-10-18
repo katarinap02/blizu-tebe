@@ -10,19 +10,26 @@
         public UserRole Role { get; set; }
         public DateTime DateOfBirth { get; set; }
         public Boolean IsVerified { get; set; }
+        public int? LocalCommunityId { get; set; }
+        public string? ProfilePicture { get; set; }
+        public double Rating { get; set; }
 
-        public User(int id, string username, string password, string name, string surname, UserRole role, DateTime dateOfBirth, bool isVerified)
+        public User() { }
+
+        public User(int id, string username, string password, string name, string surname, UserRole role, DateTime dateOfBirth, bool isVerified, int? localCommunityId, string profilePicture, double rating)
         {
             Id = id;
             Username = username;
             Password = password;
             Name = name;
             Surname = surname;
-            this.Role = role;
-            this.DateOfBirth = dateOfBirth;
-            this.IsVerified = isVerified;
+            Role = role;
+            DateOfBirth = dateOfBirth;
+            IsVerified = isVerified;
+            LocalCommunityId = localCommunityId;
+            ProfilePicture = profilePicture;
+            Rating = rating;
         }
-
     }
 }
 

@@ -10,6 +10,10 @@
         public UserRole Role { get; set; }
         public DateTime DateOfBirth { get; set; }
         public Boolean IsVerified { get; set; }
+        public int? LocalCommunityId { get; set; }
+        public IFormFile? Picture { get; set; }
+        public string? ProfilePicture { get; set; }
+        public double Rating { get; set; }
 
     }
 }

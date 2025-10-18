@@ -9,5 +9,8 @@
         public string? ExistingPicture { get; set; }
         public DateTime PublishedAt { get; set; }
         public DateTime ExpirationDate { get; set; }
+        public bool IsImportant { get; set; }
+        public int? AdminId { get; set; }
+        public int? LocalCommuntyId { get; set; }
     }
 }
