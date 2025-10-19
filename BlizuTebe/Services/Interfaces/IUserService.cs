@@ -5,13 +5,13 @@ namespace BlizuTebe.Services.Interfaces
 {
     public interface IUserService
     {
+        Result<UserDto> Register(UserDto user);
+        Result<UserViewDto> GetById(long id);
+        Result<List<UserViewDto>> GetAll();
+        Result<UserViewDto> DeleteById(long id);
+        Result<UserViewDto> UpdateUser(long id, UserViewDto user);
+        Result<UserViewDto> VerifyUser(long id);
 
-        Result<UserDto> getById(long id);
-        Result<List<UserDto>> getAll();
-
-        Result<UserDto> deleteById(long id);
-
-        Result<UserDto> updateUser(long id, UserDto user);
 
     }
 }

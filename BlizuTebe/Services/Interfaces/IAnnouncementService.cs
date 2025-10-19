@@ -6,12 +6,12 @@ namespace BlizuTebe.Services.Interfaces
     public interface IAnnouncementService
     {
         Result<AnnouncementDto> Create(AnnouncementDto dto);
-        Result<AnnouncementDto> getById(long id);
+        Result<AnnouncementDto> GetById(long id);
 
-        Result<AnnouncementDto> deleteById(long id);
+        Result<AnnouncementDto> DeleteById(long id);
 
-        Result<AnnouncementDto> updateById(long id, AnnouncementDto dto);
+        Result<AnnouncementDto> UpdateById(long id, AnnouncementDto dto);
 
-        Result<List<AnnouncementDto>> getAnnouncements();
+        Result<List<AnnouncementDto>> GetAnnouncements();
     }
 }

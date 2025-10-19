@@ -40,5 +40,10 @@ namespace BlizuTebe.Repositories
         {
             return _context.Users.FirstOrDefault(u => u.Username == username && u.IsVerified);
         }
+
+        public List<User> GetAll()
+        {
+            return _context.Users.ToList();
+        }
     }
 }

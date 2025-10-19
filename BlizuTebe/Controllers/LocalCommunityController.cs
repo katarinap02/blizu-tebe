@@ -25,7 +25,6 @@ namespace BlizuTebe.Controllers
             return CreateResponse(result);
         }
 
-        [Authorize(Roles = "Admin,Member")]
         [HttpGet]
         public ActionResult<List<LocalCommunityDto>> GetAll()
         {
@@ -33,7 +32,6 @@ namespace BlizuTebe.Controllers
             return CreateResponse(result);
         }
 
-        [Authorize(Roles = "Admin,Member")]
         [HttpGet("by-location")]
         public ActionResult<LocalCommunityDto> GetByLocation([FromQuery] double lat, [FromQuery] double lng)
         {

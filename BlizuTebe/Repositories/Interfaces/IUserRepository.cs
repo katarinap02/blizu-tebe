@@ -7,6 +7,7 @@ namespace BlizuTebe.Repositories.Interfaces
         void Create(User user);
         void Update(User user);
         void Delete(User user);
+        List<User> GetAll();
         User? GetById(long id);
         User? GetVerifiedByUsername(string username);
     }

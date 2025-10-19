@@ -18,13 +18,33 @@ namespace BlizuTebe.Mapper
             CreateMap<Announcement, AnnouncementDto>()
                 .ForMember(dest => dest.Picture, opt => opt.Ignore())
                 .ForMember(dest => dest.ExistingPicture, opt => opt.MapFrom(src => src.Picture));
-            CreateMap<User, UserDto>();
-            CreateMap<UserDto, User>()
-            .ForMember(dest => dest.Password, opt => opt.Ignore()) 
-            .ForMember(dest => dest.IsVerified, opt => opt.Ignore()) 
-            .ForMember(dest => dest.Role, opt => opt.Ignore());
+            CreateMap<User, UserDto>()
+            .ForMember(dest => dest.Picture, opt => opt.Ignore())
+            .ForMember(dest => dest.ProfilePicture, opt => opt.MapFrom(src => src.ProfilePicture));
 
-           
+            CreateMap<UserDto, User>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.Password, opt => opt.Ignore())
+                .ForMember(dest => dest.IsVerified, opt => opt.Ignore())
+                .ForMember(dest => dest.Role, opt => opt.Ignore())
+                .ForMember(dest => dest.ProfilePicture, opt => opt.Ignore())
+                .ForMember(dest => dest.Rating, opt => opt.Ignore());
+
+            CreateMap<UserViewDto, User>()
+            .ForMember(dest => dest.Id, opt => opt.Ignore())
+            .ForMember(dest => dest.Password, opt => opt.Ignore())
+            .ForMember(dest => dest.IsVerified, opt => opt.Ignore())
+            .ForMember(dest => dest.Role, opt => opt.Ignore())
+            .ForMember(dest => dest.ProfilePicture, opt => opt.Ignore())
+            .ForMember(dest => dest.Rating, opt => opt.Ignore());
+
+            CreateMap<User, UserViewDto>()
+                .ForMember(dest => dest.ProfilePicture, opt => opt.MapFrom(src =>
+                    !string.IsNullOrEmpty(src.ProfilePicture)
+                        ? $"/images/profiles/{src.ProfilePicture}"
+                        : null));
+
+
         }
     }
 }

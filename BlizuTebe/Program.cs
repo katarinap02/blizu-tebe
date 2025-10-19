@@ -52,6 +52,8 @@ builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("WebApiDatabase")));
+builder.Services.AddHostedService<AnnouncementCleanupServices>();
+
 
 
 builder.Services.AddScoped<IAuthenticationService, AuthentificationService>();

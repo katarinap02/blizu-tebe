@@ -39,7 +39,7 @@ namespace BlizuTebe.Services
             return Result.Ok(_mapper.Map<AnnouncementDto>(newAnnouncement));
         }
 
-        public Result<AnnouncementDto> updateById(long id, AnnouncementDto dto)
+        public Result<AnnouncementDto> UpdateById(long id, AnnouncementDto dto)
         {
             var announcementToUpdate = _announcementRepository.GetById(id);
             if (announcementToUpdate == null)
@@ -70,7 +70,7 @@ namespace BlizuTebe.Services
         }
 
 
-        public Result<AnnouncementDto> deleteById(long id)
+        public Result<AnnouncementDto> DeleteById(long id)
         {
             var announcement = _announcementRepository.GetById(id);
             if (announcement == null)
@@ -86,13 +86,13 @@ namespace BlizuTebe.Services
             return Result.Ok(_mapper.Map<AnnouncementDto>(announcement));
         }
 
-        public Result<List<AnnouncementDto>> getAnnouncements()
+        public Result<List<AnnouncementDto>> GetAnnouncements()
         {
             var announcements = _announcementRepository.GetAll();
             return Result.Ok(_mapper.Map<List<AnnouncementDto>>(announcements));
         }
 
-        public Result<AnnouncementDto> getById(long id)
+        public Result<AnnouncementDto> GetById(long id)
         {
             var an = _announcementRepository.GetById(id);
             if (an == null)

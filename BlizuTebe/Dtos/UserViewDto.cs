@@ -1,0 +1,17 @@
+﻿namespace BlizuTebe.Dtos
+{
+    public class UserViewDto
+    {
+        public long Id { get; set; }
+        public string Username { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public UserRole Role { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public Boolean IsVerified { get; set; }
+        public long? LocalCommunityId { get; set; }
+        public IFormFile? Picture { get; set; }
+        public string? ProfilePicture { get; set; }
+        public double Rating { get; set; }
+    }
+}

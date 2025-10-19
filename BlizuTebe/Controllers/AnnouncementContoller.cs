@@ -29,7 +29,7 @@ namespace BlizuTebe.Controllers
         [HttpPut("{id}")]
         public ActionResult<AnnouncementDto> UpdateAnnouncement([FromRoute] long id, [FromForm] AnnouncementDto announcementDto)
         {
-            var result = _announcementService.updateById(id, announcementDto);
+            var result = _announcementService.UpdateById(id, announcementDto);
             return CreateResponse(result);
         }
 
@@ -37,7 +37,7 @@ namespace BlizuTebe.Controllers
         [HttpGet]
         public ActionResult<List<AnnouncementDto>> GetAllAnnouncements()
         {
-            var result = _announcementService.getAnnouncements();
+            var result = _announcementService.GetAnnouncements();
             return CreateResponse(result);
         }
 
@@ -45,7 +45,7 @@ namespace BlizuTebe.Controllers
         [HttpDelete("{id}")]
         public ActionResult<AnnouncementDto> DeleteAnnouncement([FromRoute] long id)
         {
-            var result = _announcementService.deleteById(id);
+            var result = _announcementService.DeleteById(id);
             return CreateResponse(result);
         }
 
@@ -53,7 +53,7 @@ namespace BlizuTebe.Controllers
         [HttpGet("getById/{id}")]
         public ActionResult<AnnouncementDto> geAnnouncementById([FromRoute] long id)
         {
-            var an = _announcementService.getById(id);
+            var an = _announcementService.GetById(id);
             return CreateResponse(an);
         }
     }
