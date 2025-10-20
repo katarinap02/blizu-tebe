@@ -94,6 +94,8 @@ namespace BlizuTebe.Services
             _mapper.Map(dto, userToUpdate);
 
 
+
+
             if (dto.Picture != null && dto.Picture.Length > 0)
             {
                 if (!string.IsNullOrEmpty(userToUpdate.ProfilePicture))

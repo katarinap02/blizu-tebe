@@ -39,10 +39,8 @@ namespace BlizuTebe.Mapper
             .ForMember(dest => dest.Rating, opt => opt.Ignore());
 
             CreateMap<User, UserViewDto>()
-                .ForMember(dest => dest.ProfilePicture, opt => opt.MapFrom(src =>
-                    !string.IsNullOrEmpty(src.ProfilePicture)
-                        ? $"/images/profiles/{src.ProfilePicture}"
-                        : null));
+                .ForMember(dest => dest.Picture, opt => opt.Ignore())
+                .ForMember(dest => dest.ProfilePicture, opt => opt.MapFrom(src => src.ProfilePicture));
 
 
         }
