@@ -35,6 +35,16 @@ namespace BlizuTebe.Repositories
             return _context.Ratings.FirstOrDefault(r => r.Id == id);
         }
 
+        public List<Rating> GetByRatedId(long ratedId)
+        {
+            return _context.Ratings.Where(r => r.RatedId == ratedId).ToList();
+        }
+
+        public List<Rating> GetByRaterId(long raterId)
+        {
+            return _context.Ratings.Where(r => r.RaterId == raterId).ToList();
+        }
+
         public void Update(Rating rating)
         {
             _context.Ratings.Update(rating);

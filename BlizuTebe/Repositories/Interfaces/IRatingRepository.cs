@@ -9,5 +9,7 @@ namespace BlizuTebe.Repositories.Interfaces
         void Delete(Rating an);
         Rating? GetById(long id);
         List<Rating> GetAll();
+        List<Rating> GetByRaterId(long raterId);
+        List<Rating> GetByRatedId(long ratedId);
     }
 }

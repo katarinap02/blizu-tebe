@@ -4,7 +4,7 @@ using BlizuTebe.Repositories.Interfaces;
 
 namespace BlizuTebe.Repositories
 {
-    public class DiscussionRepository : IDiscussionRepostiry
+    public class DiscussionRepository : IDiscussionRepository
     {
         private readonly AppDbContext _context;
 

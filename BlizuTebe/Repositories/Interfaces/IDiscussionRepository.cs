@@ -2,7 +2,7 @@
 
 namespace BlizuTebe.Repositories.Interfaces
 {
-    public interface IDiscussionRepostiry
+    public interface IDiscussionRepository
     {
         void Create(Discussion an);
         void Update(Discussion an);

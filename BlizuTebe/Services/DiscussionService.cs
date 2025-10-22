@@ -11,9 +11,9 @@ namespace BlizuTebe.Services
     public class DiscussionService : IDiscussionService
     {
         private readonly IMapper _mapper;
-        private readonly IDiscussionRepostiry _discussionRepository;
+        private readonly IDiscussionRepository _discussionRepository;
 
-        public DiscussionService(IMapper mapper, DiscussionRepository discussionRepository)
+        public DiscussionService(IMapper mapper, IDiscussionRepository discussionRepository)
         {
             _mapper = mapper;
             _discussionRepository = discussionRepository;
