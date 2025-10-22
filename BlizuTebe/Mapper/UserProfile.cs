@@ -53,6 +53,10 @@ namespace BlizuTebe.Mapper
                 .ReverseMap()
                 .ForMember(dest => dest.Id, opt => opt.Ignore());
 
+            CreateMap<CommunityRequestUsers, CommunityRequestUsersDto>()
+                .ReverseMap()
+                .ForMember(dest => dest.Id, opt => opt.Ignore());
+
             CreateMap<DiscussionComment, DiscussionCommentDto>()
                 .ReverseMap()
                 .ForMember(dest => dest.Id, opt => opt.Ignore());
