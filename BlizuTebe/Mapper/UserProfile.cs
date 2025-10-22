@@ -42,6 +42,27 @@ namespace BlizuTebe.Mapper
                 .ForMember(dest => dest.Picture, opt => opt.Ignore())
                 .ForMember(dest => dest.ProfilePicture, opt => opt.MapFrom(src => src.ProfilePicture));
 
+            CreateMap<CommunityRequest, CommunityRequestDto>()
+                .ForMember(dest => dest.FilePicture, opt => opt.Ignore())
+                .ForMember(dest => dest.Picture, opt => opt.MapFrom(src => src.Picture));
+            CreateMap<CommunityRequestDto, CommunityRequest>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.Picture, opt => opt.MapFrom(src => src.Picture));
+
+            CreateMap<Discussion, DiscussionDto>()
+                .ReverseMap()
+                .ForMember(dest => dest.Id, opt => opt.Ignore());
+
+            CreateMap<DiscussionComment, DiscussionCommentDto>()
+                .ReverseMap()
+                .ForMember(dest => dest.Id, opt => opt.Ignore());
+
+
+            CreateMap<Rating, RatingDto>()
+                .ReverseMap()
+                .ForMember(dest => dest.Id, opt => opt.Ignore());
+
+
 
         }
     }

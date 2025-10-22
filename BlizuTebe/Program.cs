@@ -65,6 +65,15 @@ builder.Services.AddScoped<IAnnouncementService, AnnouncementService>();
 builder.Services.AddSingleton<IWebHostEnvironment>(builder.Environment);
 builder.Services.AddScoped<ILocalCommunityRepository, LocalCommunityRepository>();
 builder.Services.AddScoped<ILocalCommunityService, LocalCommunityService>();
+builder.Services.AddScoped<IDiscussionRepostiry, DiscussionRepository>();
+builder.Services.AddScoped<IDiscussionCommentRepository, DiscussionCommentRepository>();
+builder.Services.AddScoped<ICommunityRequestRepository, CommunityRequestRepository>();
+builder.Services.AddScoped<ICommunityRequestUsersRepository, CommunityRequestUsersRepository>();
+builder.Services.AddScoped<IRatingRepository, RatingRepository>();
+builder.Services.AddScoped<IDiscussionService, DiscussionService>();
+builder.Services.AddScoped<IDiscussionCommentService, DiscussionCommentService>();
+builder.Services.AddScoped<ICommunityRequestUsersService, CommunityRequestUsersService>();
+builder.Services.AddScoped<CommunityRequestService, CommunityRequestService>();
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 

@@ -38,5 +38,13 @@ namespace BlizuTebe.Database
         public DbSet<Announcement> Announcements { get; set; }
 
         public DbSet<LocalCommunity> LocalCommunities { get; set; }
+
+        public DbSet<CommunityRequest> CommunityRequests { get; set; }
+
+        public DbSet<CommunityRequestUsers> CommunityRequestUsers { get; set; }
+
+        public DbSet<Rating> Ratings { get; set; }
+        public DbSet<Discussion> Discussions { get; set; }
+        public DbSet<DiscussionComment> DiscussionComments { get; set; }
     }
 }
