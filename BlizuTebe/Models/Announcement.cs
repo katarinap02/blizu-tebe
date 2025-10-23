@@ -10,11 +10,11 @@
         public DateTime ExpirationDate { get; set; }
         public bool IsImportant { get; set; }
         public long? AdminId { get; set; }
-        public long? LocalCommuntyId { get; set; }
+        public long? LocalCommunityId { get; set; }
 
         public Announcement() { }
 
-        public Announcement(long id, string title, string description, string picture, DateTime publishedAt, DateTime expirationDate, bool isImportant, long? adminId, long? localCommuntyId)
+        public Announcement(long id, string title, string description, string picture, DateTime publishedAt, DateTime expirationDate, bool isImportant, long? adminId, long? localCommunityId)
         {
             Id = id;
             Title = title;
@@ -24,7 +24,7 @@
             ExpirationDate = expirationDate;
             IsImportant = isImportant;
             AdminId = adminId;
-            LocalCommuntyId = localCommuntyId;
+            LocalCommunityId = localCommunityId;
         }
     }
 }

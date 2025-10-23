@@ -11,6 +11,6 @@
         public bool Fulfilled { get; set; }
         public RequestType RequestType { get; set; }
         public long? AdminId { get; set; }
-        public long? LocalCommuntyId { get; set; }
+        public long? LocalCommunityId { get; set; }
     }
 }

@@ -8,11 +8,11 @@
         public DateTime CreatedAt { get; set; }
         public bool isClosed { get; set; }
         public long? AdminId { get; set; }
-        public long? LocalCommuntyId { get; set; }
+        public long? LocalCommunityId { get; set; }
 
         public Discussion() { }
 
-        public Discussion(long id, string name, string description, DateTime createdAt, bool isClosed, long? adminId, long? localCommuntyId)
+        public Discussion(long id, string name, string description, DateTime createdAt, bool isClosed, long? adminId, long? localCommunityId)
         {
             Id = id;
             Name = name;
@@ -20,7 +20,7 @@
             CreatedAt = createdAt;
             this.isClosed = isClosed;
             AdminId = adminId;
-            LocalCommuntyId = localCommuntyId;
+            LocalCommunityId = localCommunityId;
         }
     }
 }

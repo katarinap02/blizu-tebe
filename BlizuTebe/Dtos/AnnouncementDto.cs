@@ -11,6 +11,6 @@
         public DateTime ExpirationDate { get; set; }
         public bool IsImportant { get; set; }
         public long? AdminId { get; set; }
-        public long? LocalCommuntyId { get; set; }
+        public long? LocalCommunityId { get; set; }
     }
 }

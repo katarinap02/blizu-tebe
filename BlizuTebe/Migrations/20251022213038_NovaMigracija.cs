@@ -75,7 +75,7 @@ namespace BlizuTebe.Migrations
                 oldType: "text");
 
             migrationBuilder.AlterColumn<long>(
-                name: "LocalCommuntyId",
+                name: "LocalCommunityId",
                 table: "Announcements",
                 type: "bigint",
                 nullable: true,
@@ -115,7 +115,7 @@ namespace BlizuTebe.Migrations
                     Fulfilled = table.Column<bool>(type: "boolean", nullable: false),
                     RequestType = table.Column<int>(type: "integer", nullable: false),
                     AdminId = table.Column<long>(type: "bigint", nullable: true),
-                    LocalCommuntyId = table.Column<long>(type: "bigint", nullable: true)
+                    LocalCommunityId = table.Column<long>(type: "bigint", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -163,7 +163,7 @@ namespace BlizuTebe.Migrations
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     isClosed = table.Column<bool>(type: "boolean", nullable: false),
                     AdminId = table.Column<long>(type: "bigint", nullable: true),
-                    LocalCommuntyId = table.Column<long>(type: "bigint", nullable: true)
+                    LocalCommunityId = table.Column<long>(type: "bigint", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -275,7 +275,7 @@ namespace BlizuTebe.Migrations
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<int>(
-                name: "LocalCommuntyId",
+                name: "LocalCommunityId",
                 table: "Announcements",
                 type: "integer",
                 nullable: true,

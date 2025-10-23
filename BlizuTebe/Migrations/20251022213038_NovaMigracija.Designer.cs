@@ -48,7 +48,7 @@ namespace BlizuTebe.Migrations
                     b.Property<bool>("IsImportant")
                         .HasColumnType("boolean");
 
-                    b.Property<long?>("LocalCommuntyId")
+                    b.Property<long?>("LocalCommunityId")
                         .HasColumnType("bigint");
 
                     b.Property<string>("Picture")
@@ -87,7 +87,7 @@ namespace BlizuTebe.Migrations
                     b.Property<bool>("Fulfilled")
                         .HasColumnType("boolean");
 
-                    b.Property<long?>("LocalCommuntyId")
+                    b.Property<long?>("LocalCommunityId")
                         .HasColumnType("bigint");
 
                     b.Property<string>("Picture")
@@ -142,7 +142,7 @@ namespace BlizuTebe.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<long?>("LocalCommuntyId")
+                    b.Property<long?>("LocalCommunityId")
                         .HasColumnType("bigint");
 
                     b.Property<string>("Name")

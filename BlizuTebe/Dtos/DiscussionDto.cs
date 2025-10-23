@@ -8,6 +8,6 @@
         public DateTime CreatedAt { get; set; }
         public bool isClosed { get; set; }
         public long? AdminId { get; set; }
-        public long? LocalCommuntyId { get; set; }
+        public long? LocalCommunityId { get; set; }
     }
 }

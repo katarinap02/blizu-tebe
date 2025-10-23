@@ -10,12 +10,12 @@
         public bool Fulfilled { get; set; }
         public RequestType RequestType { get; set; }
         public long? AdminId { get; set; }
-        public long? LocalCommuntyId { get; set; }
+        public long? LocalCommunityId { get; set; }
 
 
         public CommunityRequest() { }
 
-        public CommunityRequest(long id, string title, string description, string? picture, DateTime createdAt, bool fulfilled, RequestType request, long? adminId, long? localCommuntyId)
+        public CommunityRequest(long id, string title, string description, string? picture, DateTime createdAt, bool fulfilled, RequestType request, long? adminId, long? localCommunityId)
         {
             Id = id;
             Title = title;
@@ -25,7 +25,7 @@
             Fulfilled = fulfilled;
             RequestType = request;
             AdminId = adminId;
-            LocalCommuntyId = localCommuntyId;
+            LocalCommunityId = localCommunityId;
         }
     }
 }

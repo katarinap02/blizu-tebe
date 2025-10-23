@@ -48,7 +48,7 @@ namespace BlizuTebe.Migrations
                     b.Property<bool>("IsImportant")
                         .HasColumnType("boolean");
 
-                    b.Property<int?>("LocalCommuntyId")
+                    b.Property<int?>("LocalCommunityId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Picture")

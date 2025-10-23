@@ -29,7 +29,7 @@ namespace BlizuTebe.Migrations
                     ExpirationDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     IsImportant = table.Column<bool>(type: "boolean", nullable: false),
                     AdminId = table.Column<int>(type: "integer", nullable: true),
-                    LocalCommuntyId = table.Column<int>(type: "integer", nullable: true)
+                    LocalCommunityId = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
                 {
