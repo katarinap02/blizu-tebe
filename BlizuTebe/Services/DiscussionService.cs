@@ -12,11 +12,13 @@ namespace BlizuTebe.Services
     {
         private readonly IMapper _mapper;
         private readonly IDiscussionRepository _discussionRepository;
+        private readonly IDiscussionCommentRepository _discussionCommentRepository;
 
-        public DiscussionService(IMapper mapper, IDiscussionRepository discussionRepository)
+        public DiscussionService(IMapper mapper, IDiscussionRepository discussionRepository, IDiscussionCommentRepository discussionCommentRepository)
         {
             _mapper = mapper;
             _discussionRepository = discussionRepository;
+            _discussionCommentRepository = discussionCommentRepository;
         }
 
         public Result<DiscussionDto> Create(DiscussionDto dto)
@@ -55,8 +57,15 @@ namespace BlizuTebe.Services
             {
                 return Result.Fail<DiscussionDto>("Discussion not found with ID: " + id);
             }
+            var comments = _discussionCommentRepository.GetByDiscussionId(id);
+
+            foreach (var comment in comments)
+            {
+                _discussionCommentRepository.Delete(comment);
+            }
 
             _discussionRepository.Delete(discussion);
+
             return Result.Ok(_mapper.Map<DiscussionDto>(discussion));
         }
 

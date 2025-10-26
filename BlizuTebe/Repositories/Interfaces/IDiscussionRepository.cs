@@ -9,5 +9,6 @@ namespace BlizuTebe.Repositories.Interfaces
         void Delete(Discussion an);
         Discussion? GetById(long id);
         List<Discussion> GetAll();
+        bool ExistsByCommunityId(long communityId);
     }
 }

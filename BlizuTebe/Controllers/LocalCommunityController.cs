@@ -25,6 +25,14 @@ namespace BlizuTebe.Controllers
             return CreateResponse(result);
         }
 
+        [Authorize(Roles = "Admin")]
+        [HttpPut("{id}")]
+        public ActionResult<LocalCommunityDto> Update(long id, [FromBody] LocalCommunityDto dto)
+        {
+            var result = _service.Update(id, dto);
+            return CreateResponse(result);
+        }
+
         [HttpGet]
         public ActionResult<List<LocalCommunityDto>> GetAll()
         {
@@ -52,7 +60,13 @@ namespace BlizuTebe.Controllers
         public ActionResult<LocalCommunityDto> Delete([FromRoute] long id)
         {
             var result = _service.Delete(id);
-            return CreateResponse(result);
+
+            if (!result.IsSuccess)
+            {
+                return BadRequest(new { message = result.Errors });
+            }
+
+            return Ok(result.Value);
         }
 
     }

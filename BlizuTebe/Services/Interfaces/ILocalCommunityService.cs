@@ -6,6 +6,7 @@ namespace BlizuTebe.Services.Interfaces
     public interface ILocalCommunityService
     {
         Result<LocalCommunityDto> Create(LocalCommunityDto dto);
+        Result<LocalCommunityDto> Update(long id, LocalCommunityDto dto);
         Result<LocalCommunityDto> GetById(long id);
         Result<List<LocalCommunityDto>> GetAll();
         Result<LocalCommunityDto> Delete(long id);

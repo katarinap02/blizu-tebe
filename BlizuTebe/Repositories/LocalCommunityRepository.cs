@@ -19,6 +19,12 @@ namespace BlizuTebe.Repositories
             _context.SaveChanges();
         }
 
+        public void Update(LocalCommunity community)
+        {
+            _context.LocalCommunities.Update(community);
+            _context.SaveChanges();
+        }
+
         public void Delete(LocalCommunity community)
         {
             _context.LocalCommunities.Remove(community);

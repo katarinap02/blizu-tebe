@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BlizuTebe.Dtos;
 using BlizuTebe.Models;
+using BlizuTebe.Repositories;
 using BlizuTebe.Repositories.Interfaces;
 using BlizuTebe.Services.Interfaces;
 using FluentResults;
@@ -12,12 +13,14 @@ namespace BlizuTebe.Services
         private readonly IMapper _mapper;
         private readonly ICommunityRequestRepository _communityRequestRepository;
         private readonly IWebHostEnvironment _environment;
+        private readonly ICommunityRequestUsersRepository _communityUsersRepository;
 
-        public CommunityRequestService(IMapper mapper, ICommunityRequestRepository communityRequestRepository, IWebHostEnvironment environment)
+        public CommunityRequestService(IMapper mapper, ICommunityRequestRepository communityRequestRepository, IWebHostEnvironment environment, ICommunityRequestUsersRepository usersRepository)
         {
             _mapper = mapper;
             _communityRequestRepository = communityRequestRepository;
             _environment = environment;
+            _communityUsersRepository = usersRepository;
         }
 
         public Result<CommunityRequestDto> Create(CommunityRequestDto dto)
@@ -79,7 +82,15 @@ namespace BlizuTebe.Services
                 DeleteImage(request.Picture);
             }
 
+            var relatedUsers = _communityUsersRepository.GetByRequestId(id);
+
+            foreach (var userLink in relatedUsers)
+            {
+                _communityUsersRepository.Delete(userLink);
+            }
+
             _communityRequestRepository.Delete(request);
+
             return Result.Ok(_mapper.Map<CommunityRequestDto>(request));
         }
 

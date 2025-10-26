@@ -39,5 +39,16 @@ namespace BlizuTebe.Repositories
             _context.Announcements.Update(an);
             _context.SaveChanges();
         }
+
+        public bool ExistsByCommunityId(long communityId)
+        {
+            try { 
+            return _context.Announcements.Any(u => u.LocalCommunityId == communityId);
+            }
+            catch
+            {
+                return false; 
+            }
+        }
     }
 }

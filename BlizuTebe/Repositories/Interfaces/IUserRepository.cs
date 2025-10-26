@@ -10,5 +10,6 @@ namespace BlizuTebe.Repositories.Interfaces
         List<User> GetAll();
         User? GetById(long id);
         User? GetVerifiedByUsername(string username);
+        bool ExistsByCommunityId(long communityId);
     }
 }
