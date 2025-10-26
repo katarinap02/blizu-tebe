@@ -43,6 +43,14 @@ namespace BlizuTebe.Controllers
         }
 
         [Authorize(Roles = "Admin")]
+        [HttpPost("registerAdmin")]
+        public ActionResult<UserDto> RegisterAdmin([FromForm] UserDto dto)
+        {
+            var result = _userService.RegisterAdmin(dto);
+            return CreateResponse(result);
+        }
+
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public ActionResult<List<UserDto>> GetAllUsers()
         {

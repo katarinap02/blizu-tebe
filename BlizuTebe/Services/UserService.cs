@@ -50,6 +50,34 @@ namespace BlizuTebe.Services
             return Result.Ok(_mapper.Map<UserDto>(newUser));
         }
 
+        public Result<UserDto> RegisterAdmin(UserDto dto)
+        {
+            var newUser = _mapper.Map<User>(dto);
+            if (newUser == null)
+            {
+                return Result.Fail<UserDto>("User mapping failed.");
+            }
+
+            var existing = _userRepository.GetAll().FirstOrDefault(u => u.Username == dto.Username);
+            if (existing != null)
+            {
+                return Result.Fail<UserDto>("Username already exists.");
+            }
+
+            if (dto.Picture != null && dto.Picture.Length > 0)
+            {
+                newUser.ProfilePicture = SaveImage(dto.Picture);
+            }
+
+            newUser.IsVerified = true;
+            newUser.Rating = 0.0;
+            newUser.Role = UserRole.Admin;
+            newUser.DateOfBirth = DateTime.SpecifyKind(newUser.DateOfBirth, DateTimeKind.Utc);
+
+            _userRepository.Create(newUser);
+            return Result.Ok(_mapper.Map<UserDto>(newUser));
+        }
+
         public Result<UserViewDto> DeleteById(long id)
         {
             var user = _userRepository.GetById(id);
