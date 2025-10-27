@@ -15,7 +15,7 @@ namespace BlizuTebe.Controllers
             _communityRequestService = communityRequestService;
         }
 
-        [Authorize(Roles = "Admin,Member")]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult<CommunityRequestDto> CreateCommunityRequest([FromForm] CommunityRequestDto dto)
         {
