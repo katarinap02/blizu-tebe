@@ -11,11 +11,13 @@ namespace BlizuTebe.Services
     {
         private readonly IMapper _mapper;
         private readonly IRatingRepository _ratingRepository;
+        private readonly IUserRepository _userRepository;
 
-        public RatingService(IMapper mapper, IRatingRepository ratingRepository)
+        public RatingService(IMapper mapper, IRatingRepository ratingRepository, IUserRepository userRepository)
         {
             _mapper = mapper;
             _ratingRepository = ratingRepository;
+            _userRepository = userRepository;
         }
 
         public Result<RatingDto> Create(RatingDto dto)
@@ -29,6 +31,7 @@ namespace BlizuTebe.Services
             newRating.TimeStamp = DateTime.SpecifyKind(newRating.TimeStamp, DateTimeKind.Utc);
 
             _ratingRepository.Create(newRating);
+            UpdateUserAverageRating(newRating.RatedId);
             return Result.Ok(_mapper.Map<RatingDto>(newRating));
         }
 
@@ -86,5 +89,22 @@ namespace BlizuTebe.Services
             var ratings = _ratingRepository.GetByRatedId(ratedId);
             return Result.Ok(_mapper.Map<List<RatingDto>>(ratings));
         }
+
+        private void UpdateUserAverageRating(long ratedUserId)
+        {
+            var allRatings = _ratingRepository.GetByRatedId(ratedUserId);
+            if (allRatings == null || allRatings.Count == 0)
+                return;
+
+            double average = allRatings.Average(r => r.Score);
+
+            var user = _userRepository.GetById(ratedUserId);
+            if (user != null)
+            {
+                user.Rating = Math.Round(average, 2);
+                _userRepository.Update(user);
+            }
+        }
     }
+
 }
