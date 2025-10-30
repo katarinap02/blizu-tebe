@@ -84,5 +84,38 @@ namespace BlizuTebe.Services
             }
             return Result.Ok(_mapper.Map<DiscussionDto>(discussion));
         }
+
+        public Result<List<DiscussionDto>> GetAllSorted()
+        {
+            var discussions = _discussionRepository.GetAll();
+            var comments = _discussionCommentRepository.GetAll(); 
+
+            var now = DateTime.UtcNow;
+
+            var sorted = discussions
+                .Select(d =>
+                {
+                    var discussionComments = comments.Where(c => c.DiscussionId == d.Id).ToList();
+
+                    int commentCount = discussionComments.Count;
+                    DateTime lastActivity = discussionComments.Any()
+                        ? discussionComments.Max(c => c.CommentedAt)
+                        : d.CreatedAt;
+
+                    // Formula za score
+                    double score =
+                        (d.isPinned ? 10000 : 0) +                // Pinned je najvazniji da ide na vrh
+                        (commentCount * 1.5) -                    // Koliko ima komentara u chat-u
+                        ((now - lastActivity).TotalHours * 0.1);  // Kad je poslednja poruka poslata
+
+                    return new { Discussion = d, Score = score };
+                })
+                .OrderByDescending(x => x.Score)
+                .Select(x => x.Discussion)
+                .ToList();
+
+            return Result.Ok(_mapper.Map<List<DiscussionDto>>(sorted));
+        }
+
     }
 }

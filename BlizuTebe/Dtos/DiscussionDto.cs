@@ -6,7 +6,7 @@
         public string Name { get; set; }
         public string Description { get; set; }
         public DateTime CreatedAt { get; set; }
-        public bool isClosed { get; set; }
+        public bool isPinned { get; set; }
         public long? AdminId { get; set; }
         public long? LocalCommunityId { get; set; }
     }

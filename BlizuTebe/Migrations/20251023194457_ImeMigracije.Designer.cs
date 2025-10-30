@@ -149,7 +149,7 @@ namespace BlizuTebe.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<bool>("isClosed")
+                    b.Property<bool>("isPinned")
                         .HasColumnType("boolean");
 
                     b.HasKey("Id");

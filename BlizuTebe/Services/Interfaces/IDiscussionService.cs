@@ -10,5 +10,6 @@ namespace BlizuTebe.Services.Interfaces
         Result<DiscussionDto> DeleteById(long id);
         Result<List<DiscussionDto>> GetAll();
         Result<DiscussionDto> GetById(long id);
+        Result<List<DiscussionDto>> GetAllSorted();
     }
 }

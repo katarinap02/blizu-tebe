@@ -35,7 +35,7 @@ namespace BlizuTebe.Controllers
         [HttpGet]
         public ActionResult<List<DiscussionDto>> GetAllDiscussions()
         {
-            var result = _discussionService.GetAll();
+            var result = _discussionService.GetAllSorted();
             return CreateResponse(result);
         }
 
