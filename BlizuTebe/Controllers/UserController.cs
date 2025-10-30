@@ -50,7 +50,7 @@ namespace BlizuTebe.Controllers
             return CreateResponse(result);
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,Member")]
         [HttpGet]
         public ActionResult<List<UserDto>> GetAllUsers()
         {
