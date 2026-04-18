@@ -66,8 +66,18 @@ namespace BlizuTebe.Mapper
                 .ReverseMap()
                 .ForMember(dest => dest.Id, opt => opt.Ignore());
 
+            CreateMap<HelpRequest, HelpRequestDto>();
 
+            CreateMap<HelpRequestDto, HelpRequest>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.PostDate, opt => opt.Ignore())
+                .ForMember(dest => dest.ExpireDate, opt => opt.Ignore())
+                .ForMember(dest => dest.UserId, opt => opt.Ignore());
 
+            CreateMap<HelpRequest, HelpRequestUpdateDto>();
+            CreateMap<HelpRequestUpdateDto, HelpRequest>()
+                .ForMember(dest => dest.PostDate, opt => opt.Ignore())
+                .ForMember(dest => dest.ExpireDate, opt => opt.Ignore());
         }
     }
 }
