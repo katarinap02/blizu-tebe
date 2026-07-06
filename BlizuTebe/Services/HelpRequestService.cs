@@ -92,6 +92,8 @@ namespace BlizuTebe.Services
             else return Result.Ok(_mapper.Map<HelpRequestDto>(helpRequest));
         }
 
+
+
         private List<HelpRequestDto> GetFilteredInternal(HelpType type, HelpStatus status)
         {
             var result = helpRequestRepository.GetAll()
