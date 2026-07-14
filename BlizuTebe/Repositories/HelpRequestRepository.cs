@@ -34,14 +34,24 @@ namespace BlizuTebe.Repositories
             _context.SaveChanges();
         }
 
-        public List<HelpRequest> GetAll()
+        public List<HelpRequest> GetAll(HelpType helpType)
         {
-            return _context.HelpRequests.ToList();
+            return _context.HelpRequests.Where(x => x.HelpType == helpType).ToList();
+        }
+
+        public List<HelpRequest> GetMyExpired(HelpType helpType, long userId)
+        {
+            return _context.HelpRequests.Where(x => x.UserId == userId && x.HelpType == helpType && x.Status == HelpStatus.Expired).ToList();
         }
 
         public HelpRequest GetById(long id)
         {
             return _context.HelpRequests.Find(id);
+        }
+
+        public List<HelpRequest> GetByCategory(HelpType helpType, HelpCategory category)
+        {
+            return _context.HelpRequests.Where(x => x.HelpType == helpType && x.Category == category).ToList();
         }
     }
 }

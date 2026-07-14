@@ -14,12 +14,14 @@ namespace BlizuTebe.Services
         private readonly IMapper _mapper;
         private readonly IHelpRequestRepository helpRequestRepository;
         private readonly IWebHostEnvironment webHostEnvironment;
+        private readonly IUserRepository userRepository;
 
-        public HelpRequestService(IMapper mapper, IHelpRequestRepository helpRequestRepository, IWebHostEnvironment webHostEnvironment)
+        public HelpRequestService(IMapper mapper, IHelpRequestRepository helpRequestRepository, IWebHostEnvironment webHostEnvironment, IUserRepository userRepository)
         {
             _mapper = mapper;
             this.helpRequestRepository = helpRequestRepository;
             this.webHostEnvironment = webHostEnvironment;
+            this.userRepository = userRepository;
         }
 
         public Result<HelpRequestDto> Create(HelpRequestDto dto)
@@ -68,9 +70,9 @@ namespace BlizuTebe.Services
             return Result.Ok(_mapper.Map<HelpRequestDto>(helpRequest));
         }
 
-        public Result<List<HelpRequestDto>> GetAll()
+        public Result<List<HelpRequestDto>> GetAll(HelpType helpType)
         {
-            var helpRequests = helpRequestRepository.GetAll();
+            var helpRequests = helpRequestRepository.GetAll(helpType);
             foreach (var hr in helpRequests)
             {
                 if (hr.ExpireDate < DateTime.UtcNow && hr.Status == HelpStatus.Pending)
@@ -93,34 +95,35 @@ namespace BlizuTebe.Services
         }
 
 
-
         private List<HelpRequestDto> GetFilteredInternal(HelpType type, HelpStatus status)
         {
-            var result = helpRequestRepository.GetAll()
-                .Where(x => x.HelpType == type && x.Status == status)
+            var result = helpRequestRepository.GetAll(type)
+                .Where(x => x.Status == status)
                 .ToList();
 
             return _mapper.Map<List<HelpRequestDto>>(result);
         }
 
-        public Result<List<HelpRequestDto>> GetPendingRequests()
+        public Result<List<HelpRequestDto>> GetPending(HelpType helpType)
         {
-            return Result.Ok(GetFilteredInternal(HelpType.Asking, HelpStatus.Pending));
+            return Result.Ok(GetFilteredInternal(helpType, HelpStatus.Pending));
         }
 
-        public Result<List<HelpRequestDto>> GetCompletedRequests()
+        public Result<List<HelpRequestDto>> GetCompleted(HelpType helpType)
         {
-            return Result.Ok(GetFilteredInternal(HelpType.Asking, HelpStatus.Completed));
+            return Result.Ok(GetFilteredInternal(helpType, HelpStatus.Completed));
         }
 
-        public Result<List<HelpRequestDto>> GetPendingOffers()
+        public Result<List<HelpRequestDto>> GetByCategory(HelpType helpType, HelpCategory helpCategory)
         {
-            return Result.Ok(GetFilteredInternal(HelpType.Offering, HelpStatus.Pending));
+            var res = helpRequestRepository.GetByCategory(helpType, helpCategory).ToList();
+            return Result.Ok(_mapper.Map<List<HelpRequestDto>>(res));
         }
 
-        public Result<List<HelpRequestDto>> GetCompletedOffers()
+        public Result<List<HelpRequestDto>> GetMyExpired(HelpType helpType, long id)
         {
-            return Result.Ok(GetFilteredInternal(HelpType.Offering, HelpStatus.Completed));
+            var res = GetFilteredInternal(helpType, HelpStatus.Expired).Where(x => x.UserId == id).ToList();
+            return Result.Ok(_mapper.Map<List<HelpRequestDto>>(res));
         }
     }
 }

@@ -8,6 +8,8 @@ namespace BlizuTebe.Repositories.Interfaces
         void Update(HelpRequest helpRequest);
         void Delete(long helpRequestId);
         HelpRequest? GetById(long id);
-        List<HelpRequest> GetAll();
+        List<HelpRequest> GetAll(HelpType helpType);
+        List<HelpRequest> GetMyExpired(HelpType helpType, long userId);
+        List<HelpRequest> GetByCategory(HelpType helpType, HelpCategory category);
     }
 }
