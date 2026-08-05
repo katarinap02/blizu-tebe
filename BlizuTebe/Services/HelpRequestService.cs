@@ -6,6 +6,7 @@ using BlizuTebe.Services.Interfaces;
 using FluentResults;
 using System.Diagnostics.Eventing.Reader;
 using System.Dynamic;
+using System.Net;
 
 namespace BlizuTebe.Services
 {
@@ -24,13 +25,18 @@ namespace BlizuTebe.Services
             this.userRepository = userRepository;
         }
 
-        public Result<HelpRequestDto> Create(HelpRequestDto dto)
+        public Result<HelpRequestDto> Create(HelpRequestUpdateDto dto)
         {
             var newHelpRequest = _mapper.Map<HelpRequest>(dto);
 
             newHelpRequest.PostDate = DateTime.UtcNow;
             newHelpRequest.ExpireDate = newHelpRequest.PostDate.AddMonths(1);
             newHelpRequest.Status = HelpStatus.Pending;
+
+            if (dto.Attachment != null && dto.Attachment.Length > 0)
+            {
+                newHelpRequest.Attachment = SaveImage(dto.Attachment);
+            }
 
             helpRequestRepository.Create(newHelpRequest);
             return Result.Ok(_mapper.Map<HelpRequestDto>(newHelpRequest));
@@ -45,14 +51,14 @@ namespace BlizuTebe.Services
                 return Result.Fail<HelpRequestDto>("Help Request not found with ID: " + dto.Id);
             }
             _mapper.Map(dto, helpRequest);
-            /*if(dto.Attachment != null && dto.Attachment.Length > 0)
+            if(dto.Attachment != null && dto.Attachment.Length > 0)
             {
                 if (!string.IsNullOrEmpty(helpRequest.Attachment))
                 {
                     DeleteImage(helpRequest.Attachment);
                 }
                 helpRequest.Attachment = SaveImage(dto.Attachment);
-            }*/
+            }
             helpRequest.Status = dto.Status;
             helpRequestRepository.Update(helpRequest);
             return Result.Ok(_mapper.Map<HelpRequestDto>(helpRequest));
@@ -66,22 +72,26 @@ namespace BlizuTebe.Services
                 return Result.Fail<HelpRequestDto>("Help request not found with id: " + id);
             }
             //TODO: ovde je opet onaj cudan deo delete image, proveri sta to znaci
+            if (!string.IsNullOrEmpty(helpRequest.Attachment))
+            {
+                DeleteImage(helpRequest.Attachment);
+            }
+
             helpRequestRepository.Delete(id);
             return Result.Ok(_mapper.Map<HelpRequestDto>(helpRequest));
         }
 
+        private List<HelpRequest> GetAllInternal(HelpType type)
+        {
+            var requests = helpRequestRepository.GetAll(type);
+            UpdateExpiredRequests(requests);
+            return requests;
+        }
+
         public Result<List<HelpRequestDto>> GetAll(HelpType helpType)
         {
-            var helpRequests = helpRequestRepository.GetAll(helpType);
-            foreach (var hr in helpRequests)
-            {
-                if (hr.ExpireDate < DateTime.UtcNow && hr.Status == HelpStatus.Pending)
-                {
-                    hr.Status = HelpStatus.Expired;
-                    helpRequestRepository.Update(hr);
-                }
-            }
-            return Result.Ok(_mapper.Map<List<HelpRequestDto>>(helpRequests));
+            var requests = GetAllInternal(helpType);
+            return Result.Ok(_mapper.Map<List<HelpRequestDto>>(requests));
         }
 
         public Result<HelpRequestDto> GetById(long id)
@@ -91,13 +101,22 @@ namespace BlizuTebe.Services
             {
                 return Result.Fail("Not Found");
             }
-            else return Result.Ok(_mapper.Map<HelpRequestDto>(helpRequest));
-        }
 
+            else{
+                if(helpRequest.ExpireDate < DateTime.UtcNow && helpRequest.Status == HelpStatus.Pending)
+                {
+                    helpRequest.Status = HelpStatus.Expired;
+                    helpRequestRepository.Update(helpRequest);
+                }
+            }
+            return Result.Ok(_mapper.Map<HelpRequestDto>(helpRequest));
+        }
 
         private List<HelpRequestDto> GetFilteredInternal(HelpType type, HelpStatus status)
         {
-            var result = helpRequestRepository.GetAll(type)
+            var all = GetAllInternal(type);
+
+            var result = all
                 .Where(x => x.Status == status)
                 .ToList();
 
@@ -123,7 +142,49 @@ namespace BlizuTebe.Services
         public Result<List<HelpRequestDto>> GetMyExpired(HelpType helpType, long id)
         {
             var res = GetFilteredInternal(helpType, HelpStatus.Expired).Where(x => x.UserId == id).ToList();
-            return Result.Ok(_mapper.Map<List<HelpRequestDto>>(res));
+            return Result.Ok(res);
+        }
+
+        private string SaveImage(IFormFile file)
+        {
+            var folder = Path.Combine(webHostEnvironment.WebRootPath, "images", "helpRequests");
+
+            if (!Directory.Exists(folder))
+            {
+                Directory.CreateDirectory(folder);
+            }
+
+            var fileName = Guid.NewGuid() + "_" + Path.GetFileName(file.FileName);
+            var path = Path.Combine(folder, fileName);
+
+            using (var stream = new FileStream(path, FileMode.Create))
+            {
+                file.CopyTo(stream);
+            }
+
+            return fileName;
+        }
+
+        private void DeleteImage(string fileName)
+        {
+            var path = Path.Combine(webHostEnvironment.WebRootPath, "images", "helpRequests", fileName);
+            
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
+        }
+
+        private void UpdateExpiredRequests(List<HelpRequest> requests)
+        {
+            foreach (var hr in requests)
+            {
+                if (hr.ExpireDate < DateTime.UtcNow && hr.Status == HelpStatus.Pending)
+                {
+                    hr.Status = HelpStatus.Expired;
+                    helpRequestRepository.Update(hr);
+                }
+            }
         }
     }
 }

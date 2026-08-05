@@ -19,7 +19,7 @@ namespace BlizuTebe.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] HelpRequestDto dto)
+        public IActionResult Create([FromForm] HelpRequestUpdateDto dto)
         {
             var result = helpRequestService.Create(dto);
             if (result.IsFailed)
@@ -29,7 +29,7 @@ namespace BlizuTebe.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(long id, [FromBody] HelpRequestUpdateDto dto)
+        public IActionResult Update(long id, [FromForm] HelpRequestUpdateDto dto)
         {
             dto.Id = id;
             var result = helpRequestService.Update(dto);

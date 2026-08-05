@@ -6,7 +6,7 @@ namespace BlizuTebe.Services.Interfaces
 {
     public interface IHelpRequestService
     {
-        Result<HelpRequestDto> Create(HelpRequestDto helpRequestDto);
+        Result<HelpRequestDto> Create(HelpRequestUpdateDto helpRequestDto);
         Result<HelpRequestDto> Update(HelpRequestUpdateDto helpRequestUpdateDto);
         Result<HelpRequestDto> Delete(long helpRequestId);
         Result<HelpRequestDto> GetById(long helpRequestId);
