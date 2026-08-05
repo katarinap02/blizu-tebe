@@ -46,5 +46,6 @@ namespace BlizuTebe.Database
         public DbSet<Rating> Ratings { get; set; }
         public DbSet<Discussion> Discussions { get; set; }
         public DbSet<DiscussionComment> DiscussionComments { get; set; }
+        public DbSet<HelpRequest> HelpRequests { get; set; }
     }
 }
