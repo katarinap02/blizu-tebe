@@ -77,6 +77,8 @@ builder.Services.AddScoped<ICommunityRequestService, CommunityRequestService>();
 builder.Services.AddScoped<IRatingService, RatingService>();
 builder.Services.AddScoped<IHelpRequestService, HelpRequestService>();
 builder.Services.AddScoped<IHelpRequestRepository, HelpRequestRepository>();
+builder.Services.AddScoped<IGiftService, GiftService>();
+builder.Services.AddScoped<IGiftRepository, GiftRepository>();
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
