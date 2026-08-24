@@ -8,7 +8,7 @@ namespace BlizuTebe.Dtos
         public string Title { get; set; }
         public string Description { get; set; }
         public long UserId { get; set; }
-        public GiftCategory Category { get; set; }
+        public GiftCategory GiftCategory { get; set; }
         public string? Contact { get; set; }
         public IFormFile? Attachment { get; set; }
         public GiftStatus Status { get; set; }

@@ -92,7 +92,8 @@ namespace BlizuTebe.Mapper
             CreateMap<Gift, GiftUpdateDto>();
             CreateMap<GiftUpdateDto, Gift>()
                 .ForMember(dest => dest.PostDate, opt => opt.Ignore())
-                .ForMember(dest => dest.ExpireDate, opt => opt.Ignore());
+                .ForMember(dest => dest.ExpireDate, opt => opt.Ignore())
+                .ForMember(dest => dest.Attachment, opt => opt.Ignore());
         }
     }
 }

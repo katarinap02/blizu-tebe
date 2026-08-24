@@ -11,8 +11,8 @@ namespace BlizuTebe.Services.Interfaces
         Result<GiftDto> Delete(long giftId);
         Result<GiftDto> GetById(long giftId);
         Result<PagedResult<GiftDto>> GetAll(int page, int size, GiftCategory? category);
-        Result<PagedResult<GiftDto>> GetPending(int page, int size);
-        Result<PagedResult<GiftDto>> GetCompleted(int page, int size);
+        Result<PagedResult<GiftDto>> GetPending(int page, int size, GiftCategory? category);
+        Result<PagedResult<GiftDto>> GetCompleted(int page, int size, GiftCategory? category);
         //Result<PagedResult<GiftDto>> GetMyExpired(long id);
     }
 }

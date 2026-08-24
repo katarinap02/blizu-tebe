@@ -119,9 +119,9 @@ namespace BlizuTebe.Services
             return Result.Ok(_mapper.Map<GiftDto>(gift));
         }
 
-        public Result<PagedResult<GiftDto>> GetPending(int page, int size)
+        public Result<PagedResult<GiftDto>> GetPending(int page, int size, GiftCategory? category)
         {
-            var gifts = GetAllInternal(page, size, null, GiftStatus.Pending);
+            var gifts = GetAllInternal(page, size, category, GiftStatus.Pending);
 
             var result = new PagedResult<GiftDto>(
                 _mapper.Map<List<GiftDto>>(gifts.Results),
@@ -131,9 +131,9 @@ namespace BlizuTebe.Services
             return Result.Ok(result);
         }
 
-        public Result<PagedResult<GiftDto>> GetCompleted(int page, int size)
+        public Result<PagedResult<GiftDto>> GetCompleted(int page, int size, GiftCategory? category)
         {
-            var gifts = GetAllInternal(page, size, null, GiftStatus.Completed);
+            var gifts = GetAllInternal(page, size, category, GiftStatus.Completed);
 
             var result = new PagedResult<GiftDto>(
                  _mapper.Map<List<GiftDto>>(gifts.Results),

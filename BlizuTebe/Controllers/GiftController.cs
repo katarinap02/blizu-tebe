@@ -20,25 +20,45 @@ namespace BlizuTebe.Controllers
         [HttpGet]
         public ActionResult GetAll([FromQuery] int page, [FromQuery] int size, [FromQuery] GiftCategory? category)
         {
-            return Ok(giftService.GetAll(page, size, category));
+            var result = giftService.GetAll(page, size, category);
+
+            if (result.IsFailed)
+                return BadRequest(result.Errors);
+
+            return Ok(result.Value);
         }
 
         [HttpGet("pending")]
-        public ActionResult GetPending([FromQuery] int page, [FromQuery] int size)
+        public ActionResult GetPending([FromQuery] int page, [FromQuery] int size, [FromQuery] GiftCategory? category)
         {
-            return Ok(giftService.GetPending(page, size));
+            var result = giftService.GetPending(page, size, category);
+
+            if (result.IsFailed)
+                return BadRequest(result.Errors);
+
+            return Ok(result.Value);
         }
 
         [HttpGet("completed")]
-        public ActionResult GetCompleted([FromQuery] int page, [FromQuery] int size)
+        public ActionResult GetCompleted([FromQuery] int page, [FromQuery] int size, [FromQuery] GiftCategory? category)
         {
-            return Ok(giftService.GetCompleted(page, size));
+            var result = giftService.GetCompleted(page, size, category);
+
+            if (result.IsFailed)
+                return BadRequest(result.Errors);
+
+            return Ok(result.Value);
         }
 
         [HttpGet("{id}")]
         public ActionResult GetById(long id)
         {
-            return Ok(giftService.GetById(id));
+            var result = giftService.GetById(id);
+
+            if (result.IsFailed)
+                return NotFound(result.Errors);
+
+            return Ok(result.Value);
         }
 
         [HttpPost]
