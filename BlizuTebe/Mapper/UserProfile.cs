@@ -102,6 +102,14 @@ namespace BlizuTebe.Mapper
 
             CreateMap<Report, ReportUpdateDto>();
             CreateMap<ReportDto, Report>();
+
+            CreateMap<Chat, ChatDto>();
+            CreateMap<ChatDto, Chat>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore());
+
+            CreateMap<Message, MessageDto>();
+            CreateMap<MessageDto, Message>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore());
         }
     }
 }
