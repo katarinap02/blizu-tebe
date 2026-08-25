@@ -94,6 +94,14 @@ namespace BlizuTebe.Mapper
                 .ForMember(dest => dest.PostDate, opt => opt.Ignore())
                 .ForMember(dest => dest.ExpireDate, opt => opt.Ignore())
                 .ForMember(dest => dest.Attachment, opt => opt.Ignore());
+
+            CreateMap<Report, ReportDto>();
+            CreateMap<ReportDto, Report>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.Timestamp, opt => opt.Ignore());
+
+            CreateMap<Report, ReportUpdateDto>();
+            CreateMap<ReportDto, Report>();
         }
     }
 }
