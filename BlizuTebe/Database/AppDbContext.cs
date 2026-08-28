@@ -49,6 +49,8 @@ namespace BlizuTebe.Database
         public DbSet<HelpRequest> HelpRequests { get; set; }
         public DbSet<Gift> Gift {  get; set; }
         public DbSet<Report> Report { get; set; }
+        public DbSet<Chat> Chat { get; set; }
+        public DbSet<Message> Message { get; set; }
 
     }
 }
