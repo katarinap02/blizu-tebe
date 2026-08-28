@@ -1,4 +1,5 @@
 ﻿using BlizuTebe.Dtos;
+using BlizuTebe.Models;
 using BlizuTebe.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -72,13 +73,9 @@ namespace BlizuTebe.Controllers
         }
 
         [HttpGet("users")]
-        public IActionResult GetByUsers(
-            [FromQuery] long user1Id,
-            [FromQuery] long user2Id,
-            [FromQuery] long postId)
+        public IActionResult GetByUsers([FromQuery] long user1Id, [FromQuery] long user2Id, [FromQuery] long postId, [FromQuery] PostType postType)
         {
-            var result = _chatService.GetByUsers(
-                user1Id, user2Id, postId);
+            var result = _chatService.GetByUsers( user1Id, user2Id, postId, postType);
 
             if (result.IsFailed)
                 return NotFound(result.Errors);
@@ -87,13 +84,10 @@ namespace BlizuTebe.Controllers
         }
 
         [HttpPost("get-or-create")]
-        public IActionResult GetOrCreate(
-            [FromQuery] long user1Id,
-            [FromQuery] long user2Id,
-            [FromQuery] long postId)
+        public IActionResult GetOrCreate([FromQuery] long user1Id, [FromQuery] long user2Id, [FromQuery] long postId, [FromQuery] PostType postType)
         {
             var result = _chatService.GetOrCreate(
-                user1Id, user2Id, postId);
+                user1Id, user2Id, postId, postType);
 
             if (result.IsFailed)
                 return BadRequest(result.Errors);

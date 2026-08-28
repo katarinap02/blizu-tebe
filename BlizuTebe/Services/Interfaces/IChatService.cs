@@ -1,4 +1,5 @@
 ﻿using BlizuTebe.Dtos;
+using BlizuTebe.Models;
 using FluentResults;
 
 namespace BlizuTebe.Services.Interfaces
@@ -10,7 +11,7 @@ namespace BlizuTebe.Services.Interfaces
         Result<ChatDto> Delete(long chatId);
         Result<ChatDto> GetById(long chatId);
         Result<List<ChatDto>> GetAllForUser(long userId);
-        Result<ChatDto> GetByUsers(long user1Id, long user2Id, long postId);
-        Result<ChatDto> GetOrCreate(long user1Id, long user2Id, long postId);
+        Result<ChatDto> GetByUsers(long user1Id, long user2Id, long postId, PostType postType);
+        Result<ChatDto> GetOrCreate(long user1Id, long user2Id, long postId, PostType postType);
     }
 }

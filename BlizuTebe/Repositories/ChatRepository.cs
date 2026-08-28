@@ -46,12 +46,13 @@ namespace BlizuTebe.Repositories
             return _context.Chat.Find(id);
         }
 
-        public Chat? GetByUsers(long user1Id, long user2Id, long postId)
+        public Chat? GetByUsers(long user1Id, long user2Id, long postId, PostType postType)
         {
             return _context.Chat.FirstOrDefault(x =>
                 ((x.User1Id == user1Id && x.User2Id == user2Id) ||
                  (x.User1Id == user2Id && x.User2Id == user1Id)) &&
-                x.PostId == postId);
+                x.PostId == postId &&
+                x.PostType == postType);
         }
 
     }

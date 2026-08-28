@@ -58,9 +58,9 @@ namespace BlizuTebe.Services
             return Result.Ok(_mapper.Map<ChatDto>(chat));
         }
 
-        public Result<ChatDto> GetByUsers(long user1Id, long user2Id, long postId)
+        public Result<ChatDto> GetByUsers(long user1Id, long user2Id, long postId, PostType postType)
         {
-            var chat = chatRepository.GetByUsers(user1Id, user2Id, postId);
+            var chat = chatRepository.GetByUsers(user1Id, user2Id, postId, postType);
 
             if (chat == null)
                 return Result.Fail<ChatDto>("Chat not found.");
@@ -68,9 +68,9 @@ namespace BlizuTebe.Services
             return Result.Ok(_mapper.Map<ChatDto>(chat));
         }
 
-        public Result<ChatDto> GetOrCreate(long user1Id, long user2Id, long postId)
+        public Result<ChatDto> GetOrCreate(long user1Id, long user2Id, long postId, PostType postType)
         {
-            var chat = chatRepository.GetByUsers(user1Id, user2Id, postId);
+            var chat = chatRepository.GetByUsers(user1Id, user2Id, postId, postType);
 
             if (chat != null)
                 return Result.Ok(_mapper.Map<ChatDto>(chat));
@@ -79,7 +79,8 @@ namespace BlizuTebe.Services
             {
                 User1Id = user1Id,
                 User2Id = user2Id,
-                PostId = postId
+                PostId = postId,
+                PostType = postType
             };
 
             chatRepository.Create(newChat);
