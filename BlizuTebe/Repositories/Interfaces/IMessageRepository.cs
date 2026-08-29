@@ -8,5 +8,6 @@ namespace BlizuTebe.Repositories.Interfaces
         void Update(Message message);
         void Delete(long id);
         List<Message> GetAllFromChat(long chatId);
+        Message GetById(long id);
     }
 }

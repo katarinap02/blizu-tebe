@@ -1,4 +1,6 @@
 ﻿using BlizuTebe.Database;
+using BlizuTebe.Dtos;
+using BlizuTebe.Migrations;
 using BlizuTebe.Models;
 using BlizuTebe.Repositories.Interfaces;
 
@@ -57,5 +59,11 @@ namespace BlizuTebe.Repositories
             }
         }
 
+        public User GetAdminByLocalCommunity(long localCommunityId)
+        {
+            return _context.Users.Where(x =>
+                        x.Role == UserRole.Admin &&
+                        x.LocalCommunityId == localCommunityId).FirstOrDefault();
+        }
     }
 }

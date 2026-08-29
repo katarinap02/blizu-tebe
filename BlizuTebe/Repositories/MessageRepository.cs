@@ -39,5 +39,10 @@ namespace BlizuTebe.Repositories
             var messages = _context.Message.AsQueryable().Where(x => x.ChatId == chatId);
             return messages.ToList();
         }
+
+        public Message GetById(long id)
+        {
+            return _context.Message.Find(id);
+        } 
     }
 }
