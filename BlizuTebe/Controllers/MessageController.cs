@@ -37,7 +37,17 @@ namespace BlizuTebe.Controllers
 
             return Ok(result.Value);
         }
-        
+
+        [HttpGet("message/{id}")]
+        public IActionResult GetMessageById(long id)
+        {
+            var result = _messageService.GetById(id);
+
+            if (result.IsFailed)
+                return BadRequest(result.Errors);
+
+            return Ok(result.Value);
+        }
     }
 }
 

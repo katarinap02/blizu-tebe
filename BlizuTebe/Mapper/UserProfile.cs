@@ -110,6 +110,14 @@ namespace BlizuTebe.Mapper
             CreateMap<Message, MessageDto>();
             CreateMap<MessageDto, Message>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore());
+
+            CreateMap<Notification, NotificationDto>();
+            CreateMap<NotificationDto, Notification>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore());
+
+            CreateMap<Notification, NotificationUpdateDto>();
+            CreateMap<NotificationUpdateDto, Notification>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore());
         }
     }
 }

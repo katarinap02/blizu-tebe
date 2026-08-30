@@ -1,4 +1,5 @@
 ﻿using BlizuTebe.Dtos;
+using BlizuTebe.Models;
 using FluentResults;
 
 namespace BlizuTebe.Services.Interfaces
@@ -7,5 +8,6 @@ namespace BlizuTebe.Services.Interfaces
     {
         Result<MessageDto> Create(MessageDto message);
         Result<List<MessageDto>> GetAllFromChat(long chatId);
+        Result<MessageDto> GetById(long id);
     }
 }

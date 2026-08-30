@@ -1,4 +1,5 @@
-﻿using BlizuTebe.Models;
+﻿using BlizuTebe.Dtos;
+using BlizuTebe.Models;
 
 namespace BlizuTebe.Repositories.Interfaces
 {
@@ -11,5 +12,6 @@ namespace BlizuTebe.Repositories.Interfaces
         User? GetById(long id);
         User? GetVerifiedByUsername(string username);
         bool ExistsByCommunityId(long communityId);
+        User GetAdminByLocalCommunity(long localCommunityId);
     }
 }

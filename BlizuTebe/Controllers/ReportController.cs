@@ -40,7 +40,12 @@ namespace BlizuTebe.Controllers
         [HttpPost]
         public ActionResult Create(ReportDto dto)
         {
-            return Ok(reportService.Create(dto));
+            var result = reportService.Create(dto);
+
+            if (result.IsFailed)
+                return BadRequest(result.Errors);
+
+            return Ok(result.Value);
         }
 
         [HttpPut]

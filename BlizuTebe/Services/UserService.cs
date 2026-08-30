@@ -111,6 +111,23 @@ namespace BlizuTebe.Services
             else return Result.Ok(_mapper.Map<UserViewDto>(user));
         }
 
+        public Result<UserDto> GetByIdInternal(long id)
+        {
+            var user = _userRepository.GetById(id);
+            if (user == null)
+            {
+                return Result.Fail("Not found");
+            }
+            else return Result.Ok(_mapper.Map<UserDto>(user));
+        }
+
+        public Result<UserDto> GetAdminByLocalCommunity(long localCommunityId)
+        {
+            var user = _userRepository.GetAdminByLocalCommunity(localCommunityId);
+            return Result.Ok(_mapper.Map<UserDto>(user));
+        }
+
+
         public Result<UserViewDto> UpdateUser(long id, UserViewDto dto)
         {
             var userToUpdate = _userRepository.GetById(id);
@@ -184,6 +201,19 @@ namespace BlizuTebe.Services
                 File.Delete(filePath);
             }
         }
-    
-}
+
+        public Result<UserDto> GetAdminForUser(long userId)
+        {
+            var user = GetByIdInternal(userId);
+
+            if (user.IsFailed)
+                return Result.Fail<UserDto>(user.Errors);
+
+            if (user.Value.LocalCommunityId == null)
+                return Result.Fail<UserDto>(
+                    "User does not belong to a local community.");
+
+            return GetAdminByLocalCommunity(user.Value.LocalCommunityId.Value);
+        }
+    }
 }
