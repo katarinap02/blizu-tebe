@@ -14,5 +14,6 @@ namespace BlizuTebe.Services.Interfaces
         Result<List<HelpRequestDto>> GetCompleted(HelpType helpType);
         Result<List<HelpRequestDto>> GetByCategory(HelpType helpType, HelpCategory helpCategory);
         Result<List<HelpRequestDto>> GetMyExpired(HelpType helpType, long id);
+        Result<List<HelpRequestDto>> MatchRequestAndOffer(long helpId);
     }
 }

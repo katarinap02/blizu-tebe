@@ -145,6 +145,27 @@ namespace BlizuTebe.Services
             return Result.Ok(res);
         }
 
+        public Result<List<HelpRequestDto>> MatchRequestAndOffer(long helpId)
+        {
+            var helpRequest = helpRequestRepository.GetById(helpId);
+
+            if(helpRequest == null)
+            {
+                return Result.Fail<List<HelpRequestDto>>("Help request not found with id: " + helpId);
+            }
+
+            var oppositeType = helpRequest.HelpType == HelpType.Asking ? HelpType.Offering : HelpType.Asking;
+
+            var matches = helpRequestRepository.GetByCategory(oppositeType, helpRequest.Category)
+                                                .Where(x => x.Id != helpId)
+                                                .Where(x => x.Status == HelpStatus.Pending)
+                                                .Where(x => x.UserId != helpRequest.UserId)
+                                                .Where(x => x.ExpireDate > DateTime.UtcNow)
+                                                .ToList();
+
+            return Result.Ok(_mapper.Map<List<HelpRequestDto>>(matches));
+        }
+
         private string SaveImage(IFormFile file)
         {
             var folder = Path.Combine(webHostEnvironment.WebRootPath, "images", "helpRequests");
@@ -186,5 +207,7 @@ namespace BlizuTebe.Services
                 }
             }
         }
+
+        
     }
 }
