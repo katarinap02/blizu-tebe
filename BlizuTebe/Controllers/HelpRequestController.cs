@@ -109,5 +109,15 @@ namespace BlizuTebe.Controllers
 
             return Ok(result.Value);
         }
+
+        [HttpGet("match/{helpId}")]
+        public IActionResult GetMatching(long helpId)
+        {
+            var result = helpRequestService.MatchRequestAndOffer(helpId);
+            if (result.IsFailed)
+                return BadRequest(result.Errors);
+
+            return Ok(result.Value);
+        }
     }
 }
