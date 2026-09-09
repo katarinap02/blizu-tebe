@@ -1,6 +1,7 @@
 ﻿using BlizuTebe.Dtos;
 using BlizuTebe.Models;
 using BlizuTebe.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,6 +18,7 @@ namespace BlizuTebe.Controllers
             this.giftService = giftService;
         }
 
+        [Authorize(Roles = "Admin,Member")]
         [HttpGet]
         public ActionResult GetAll([FromQuery] int page, [FromQuery] int size, [FromQuery] GiftCategory? category)
         {
@@ -28,6 +30,8 @@ namespace BlizuTebe.Controllers
             return Ok(result.Value);
         }
 
+
+        [Authorize(Roles = "Admin,Member")]
         [HttpGet("pending")]
         public ActionResult GetPending([FromQuery] int page, [FromQuery] int size, [FromQuery] GiftCategory? category)
         {
@@ -39,6 +43,8 @@ namespace BlizuTebe.Controllers
             return Ok(result.Value);
         }
 
+
+        [Authorize(Roles = "Admin,Member")]
         [HttpGet("completed")]
         public ActionResult GetCompleted([FromQuery] int page, [FromQuery] int size, [FromQuery] GiftCategory? category)
         {
@@ -50,6 +56,8 @@ namespace BlizuTebe.Controllers
             return Ok(result.Value);
         }
 
+
+        [Authorize(Roles = "Admin,Member")]
         [HttpGet("{id}")]
         public ActionResult GetById(long id)
         {
@@ -61,18 +69,23 @@ namespace BlizuTebe.Controllers
             return Ok(result.Value);
         }
 
+        [Authorize(Roles = "Admin,Member")]
         [HttpPost]
         public ActionResult Create([FromForm] GiftUpdateDto dto)
         {
             return Ok(giftService.Create(dto));
         }
 
+
+        [Authorize(Roles = "Admin,Member")]
         [HttpPut]
         public ActionResult Update([FromForm] GiftUpdateDto dto)
         {
             return Ok(giftService.Update(dto));
         }
 
+
+        [Authorize(Roles = "Admin,Member")]
         [HttpDelete("{id}")]
         public ActionResult Delete(long id)
         {

@@ -12,5 +12,6 @@ namespace BlizuTebe.Services.Interfaces
         Result<RatingDto> GetById(long id);
         Result<List<RatingDto>> GetByRaterId(long raterId);
         Result<List<RatingDto>> GetByRatedId(long ratedId);
+        Result<bool> CanRateUser(long chatId);
     }
 }

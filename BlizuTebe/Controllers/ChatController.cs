@@ -1,6 +1,7 @@
 ﻿using BlizuTebe.Dtos;
 using BlizuTebe.Models;
 using BlizuTebe.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,6 +18,7 @@ namespace BlizuTebe.Controllers
             _chatService = chatService;
         }
 
+        [Authorize(Roles = "Admin,Member")]
         [HttpPost]
         public IActionResult Create([FromBody] ChatDto chatDto)
         {
@@ -28,6 +30,7 @@ namespace BlizuTebe.Controllers
             return Ok(result.Value);
         }
 
+        [Authorize(Roles = "Admin,Member")]
         [HttpPut]
         public IActionResult Update([FromBody] ChatDto chatDto)
         {
@@ -39,6 +42,7 @@ namespace BlizuTebe.Controllers
             return Ok(result.Value);
         }
 
+        [Authorize(Roles = "Admin,Member")]
         [HttpDelete("{id}")]
         public IActionResult Delete(long id)
         {
@@ -50,6 +54,7 @@ namespace BlizuTebe.Controllers
             return Ok(result.Value);
         }
 
+        [Authorize(Roles = "Admin,Member")]
         [HttpGet("user/{userId}")]
         public IActionResult GetAllForUser(long userId)
         {
@@ -61,6 +66,8 @@ namespace BlizuTebe.Controllers
             return Ok(result.Value);
         }
 
+
+        [Authorize(Roles = "Admin,Member")]
         [HttpGet("{id}")]
         public IActionResult GetById(long id)
         {
@@ -72,6 +79,7 @@ namespace BlizuTebe.Controllers
             return Ok(result.Value);
         }
 
+        [Authorize(Roles = "Admin,Member")]
         [HttpGet("users")]
         public IActionResult GetByUsers([FromQuery] long user1Id, [FromQuery] long user2Id, [FromQuery] long postId, [FromQuery] PostType postType)
         {
@@ -83,6 +91,8 @@ namespace BlizuTebe.Controllers
             return Ok(result.Value);
         }
 
+
+        [Authorize(Roles = "Admin,Member")]
         [HttpPost("get-or-create")]
         public IActionResult GetOrCreate([FromQuery] long user1Id, [FromQuery] long user2Id, [FromQuery] long postId, [FromQuery] PostType postType)
         {
