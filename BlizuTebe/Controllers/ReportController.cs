@@ -1,6 +1,7 @@
 ﻿using BlizuTebe.Dtos;
 using BlizuTebe.Services;
 using BlizuTebe.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,6 +18,7 @@ namespace BlizuTebe.Controllers
             this.reportService = reportService;
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult GetAllPending([FromQuery] int page, [FromQuery] int size)
         {
@@ -26,6 +28,7 @@ namespace BlizuTebe.Controllers
             return Ok(result.Value);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet("{id}")]
         public ActionResult GetById(long id)
         {
@@ -37,6 +40,7 @@ namespace BlizuTebe.Controllers
             return Ok(result.Value);
         }
 
+        [Authorize(Roles = "Admin,Member")]
         [HttpPost]
         public ActionResult Create(ReportDto dto)
         {
@@ -48,12 +52,14 @@ namespace BlizuTebe.Controllers
             return Ok(result.Value);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public ActionResult Update(ReportUpdateDto dto)
         {
             return Ok(reportService.Update(dto));
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public ActionResult Delete(long id)
         {

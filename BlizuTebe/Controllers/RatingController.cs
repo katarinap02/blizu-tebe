@@ -70,5 +70,13 @@ namespace BlizuTebe.Controllers
             var result = _ratingService.GetByRatedId(ratedId);
             return CreateResponse(result);
         }
+
+        [Authorize(Roles = "Admin,Member")]
+        [HttpGet("canRate/{chatId}")]
+        public ActionResult<bool> CanRateUser([FromRoute] long chatId)
+        {
+            var result = _ratingService.CanRateUser(chatId);
+            return CreateResponse(result);
+        }
     }
 }

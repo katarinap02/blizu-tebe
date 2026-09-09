@@ -2,6 +2,7 @@
 using BlizuTebe.Models;
 using BlizuTebe.Services;
 using BlizuTebe.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,6 +19,8 @@ namespace BlizuTebe.Controllers
             helpRequestService = _helpRequestService;
         }
 
+
+        [Authorize(Roles = "Admin,Member")]
         [HttpPost]
         public IActionResult Create([FromForm] HelpRequestUpdateDto dto)
         {
@@ -28,6 +31,8 @@ namespace BlizuTebe.Controllers
             return Ok(result.Value);
         }
 
+
+        [Authorize(Roles = "Admin,Member")]
         [HttpPut("{id}")]
         public IActionResult Update(long id, [FromForm] HelpRequestUpdateDto dto)
         {
@@ -39,6 +44,7 @@ namespace BlizuTebe.Controllers
             return Ok(result.Value);
         }
 
+        [Authorize(Roles = "Admin,Member")]
         [HttpDelete("{id}")]
         public IActionResult Delete(long id)
         {
@@ -49,7 +55,7 @@ namespace BlizuTebe.Controllers
             return Ok(result.Value);
         }
 
-
+        [Authorize(Roles = "Admin,Member")]
         [HttpGet("pending-requests")]
         public IActionResult GetPendingRequests()
         {
@@ -57,6 +63,7 @@ namespace BlizuTebe.Controllers
             return Ok(result.Value);
         }
 
+        [Authorize(Roles = "Admin,Member")]
         [HttpGet("completed-requests")]
         public IActionResult GetCompletedRequests()
         {
@@ -64,6 +71,7 @@ namespace BlizuTebe.Controllers
             return Ok(result.Value);
         }
 
+        [Authorize(Roles = "Admin,Member")]
         [HttpGet("pending-offers")]
         public IActionResult GetPendingOffers()
         {
@@ -71,6 +79,7 @@ namespace BlizuTebe.Controllers
             return Ok(result.Value);
         }
 
+        [Authorize(Roles = "Admin,Member")]
         [HttpGet("completed-offers")]
         public IActionResult GetCompletedOffers()
         {
@@ -78,6 +87,7 @@ namespace BlizuTebe.Controllers
             return Ok(result.Value);
         }
 
+        [Authorize(Roles = "Admin,Member")]
         [HttpGet("{id}")]
         public IActionResult Get(long id) {
             var result = helpRequestService.GetById(id);
@@ -87,6 +97,7 @@ namespace BlizuTebe.Controllers
             return Ok(result.Value);
         }
 
+        [Authorize(Roles = "Admin,Member")]
         [HttpGet("category")]
         public IActionResult GetByCategory(
                 [FromQuery] HelpCategory category,
@@ -100,6 +111,7 @@ namespace BlizuTebe.Controllers
             return Ok(result.Value);
         }
 
+        [Authorize(Roles = "Admin,Member")]
         [HttpGet("{userId}/expired")]
         public IActionResult GetMyExpired(long userId, [FromQuery] HelpType type)
         {
@@ -110,6 +122,7 @@ namespace BlizuTebe.Controllers
             return Ok(result.Value);
         }
 
+        [Authorize(Roles = "Admin,Member")]
         [HttpGet("match/{helpId}")]
         public IActionResult GetMatching(long helpId)
         {

@@ -1,5 +1,6 @@
 ﻿using BlizuTebe.Dtos;
 using BlizuTebe.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,6 +17,7 @@ namespace BlizuTebe.Controllers
             _messageService = messageService;
         }
 
+        [Authorize(Roles = "Admin,Member")]
         [HttpPost]
         public IActionResult Create([FromBody] MessageDto messageDto)
         {
@@ -27,6 +29,7 @@ namespace BlizuTebe.Controllers
             return Ok(result.Value);
         }
 
+        [Authorize(Roles = "Admin,Member")]
         [HttpGet("chat/{chatId}")]
         public IActionResult GetAllFromChat(long chatId)
         {
@@ -38,6 +41,7 @@ namespace BlizuTebe.Controllers
             return Ok(result.Value);
         }
 
+        [Authorize(Roles = "Admin,Member")]
         [HttpGet("message/{id}")]
         public IActionResult GetMessageById(long id)
         {
