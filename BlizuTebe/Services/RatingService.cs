@@ -4,6 +4,7 @@ using BlizuTebe.Models;
 using BlizuTebe.Repositories.Interfaces;
 using BlizuTebe.Services.Interfaces;
 using FluentResults;
+using System.Security.Claims;
 
 namespace BlizuTebe.Services
 {
@@ -14,14 +15,16 @@ namespace BlizuTebe.Services
         private readonly IUserRepository _userRepository;
         private readonly IMessageService _messageService;
         private readonly IChatService _chatService;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public RatingService(IMapper mapper, IRatingRepository ratingRepository, IUserRepository userRepository, IMessageService messageService, IChatService chatService)
+        public RatingService(IMapper mapper, IRatingRepository ratingRepository, IUserRepository userRepository, IMessageService messageService, IChatService chatService, IHttpContextAccessor httpContextAccessor)
         {
             _mapper = mapper;
             _ratingRepository = ratingRepository;
             _userRepository = userRepository;
             _messageService = messageService;
             _chatService = chatService;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public Result<RatingDto> Create(RatingDto dto)
@@ -94,25 +97,28 @@ namespace BlizuTebe.Services
             return Result.Ok(_mapper.Map<List<RatingDto>>(ratings));
         }
 
-        public Result<bool> CanRateUser(long chatId)
+        public Result<bool> CanRateUser(long ratedUserId)
         {
-            var chat = _chatService.GetById(chatId);
-            if (chat == null)
-                return Result.Fail("Chat not found");
+            var currentUserId = long.Parse(_httpContextAccessor.HttpContext.User.FindFirst("id")!.Value
+);
+            var chats = _chatService.GetAllForUser(ratedUserId);
 
-            var messages = _messageService.GetAllFromChat(chatId);
+            var chat = chats.Value.FirstOrDefault(c =>
+                (c.User1Id == currentUserId && c.User2Id == ratedUserId) ||
+                (c.User1Id == ratedUserId && c.User2Id == currentUserId)
+            );
+
+            if (chat == null)
+                return Result.Ok(false);
+
+            var messages = _messageService.GetAllFromChat(chat.Id);
             if (messages.Value.Count < 3)
                 return Result.Ok(false);
 
-            bool user1Messaged = messages.Value.Any(m => m.SenderId == chat.Value.User1Id);
-            bool user2Messaged = messages.Value.Any(m => m.SenderId == chat.Value.User2Id);
+            bool currentUserMessaged = messages.Value.Any(m => m.SenderId == currentUserId);
+            bool ratedUserMessaged = messages.Value.Any(m => m.SenderId == ratedUserId);
 
-            if (user1Messaged && user2Messaged)
-            {
-                return Result.Ok(true);
-            }
-
-            return Result.Ok(false);
+            return Result.Ok(currentUserMessaged && ratedUserMessaged);
         }
 
         private void UpdateUserAverageRating(long ratedUserId)
